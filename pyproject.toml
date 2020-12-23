@@ -1,0 +1,17 @@
+[tool.poetry]
+name = "vocabulari.es"
+version = "0.0.1"
+description = "https://vocabulari.es/"
+authors = ["Anatoly Scherbakov <altaisoft@gmail.com>"]
+license = "MIT"
+
+[tool.poetry.dependencies]
+python = "^3.8"
+octadocs = "^0.0.1"
+mkdocs-semantic = "^0.0.6"
+
+[tool.poetry.dev-dependencies]
+
+[build-system]
+requires = ["poetry>=0.12"]
+build-backend = "poetry.masonry.api"

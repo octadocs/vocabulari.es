@@ -1,0 +1,25 @@
+site_name: octadocs
+repo_url: https://github.com/octadocs/octadocs
+repo_name: octadocs
+copyright: Copyright &copy; 2020 OctaDocs
+
+markdown_extensions:
+  - admonition
+  - codehilite
+  - attr_list
+  - pymdownx.emoji:
+      emoji_index: !!python/name:materialx.emoji.twemoji
+      emoji_generator: !!python/name:materialx.emoji.to_svg
+
+plugins:
+  - octadocs
+  - search
+  - macros:
+      modules:
+        - octadocs
+
+theme:
+  name: semantic
+  logo:
+    image: logo.png
+  custom_dir: templates
