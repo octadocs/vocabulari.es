@@ -1,8 +1,4 @@
-# OctaDocs
-
-OctaDocs is a plugin for [MkDocs](https://www.mkdocs.org/) to make it smarter.
-
-# 📚 Vocabularies
+# Vocabulari.es
 
 {% set cards = query('
     SELECT * WHERE {

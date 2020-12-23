@@ -1,6 +1,6 @@
-site_name: octadocs
-repo_url: https://github.com/octadocs/octadocs
-repo_name: octadocs
+site_name: vocabulari.es
+repo_url: https://github.com/octadocs/vocabulari.es
+repo_name: vocabulari.es
 copyright: Copyright &copy; 2020 OctaDocs
 
 markdown_extensions:
