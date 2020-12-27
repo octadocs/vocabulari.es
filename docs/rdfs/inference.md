@@ -16,7 +16,7 @@ label: RDF & RDFS Inference Rules
 
 {% macro link_to(uri_ref) %}
 {% set labels = query(
-    "SELECT * WHERE { GRAPH <local:rdfs/rdfs.n3> { ?resource rdfs:label ?label . } }",
+    "SELECT * WHERE { GRAPH <local:rdfs/rdfs.ttl> { ?resource rdfs:label ?label . } }",
     resource=uri_ref,
 ) %}
 {% if labels %}

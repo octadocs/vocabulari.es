@@ -4,11 +4,11 @@
 @prefix rdf: <https://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix xsd: <https://www.w3.org/2001/XMLSchema#> .
 
-octa:Page rdfs:SubClassOf schema:WebPage .
-octa:about rdfs:SubPropertyOf schema:about .
-octa:title rdfs:SubPropertyOf schema:name .
-octa:url rdfs:SubPropertyOf schema:url .
-octa:subjectOf rdfs:SubPropertyOf schema:SubjectOf .
+octa:Page rdfs:subClassOf schema:WebPage .
+octa:about rdfs:subPropertyOf schema:about .
+octa:title rdfs:subPropertyOf schema:name .
+octa:url rdfs:subPropertyOf schema:url .
+octa:subjectOf rdfs:subPropertyOf schema:SubjectOf .
 
 octa:template
   rdfs:domain octa:Page ;

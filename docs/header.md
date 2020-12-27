@@ -9,7 +9,7 @@
         }
 
         OPTIONAL {
-            GRAPH <local:rdfs/rdfs.n3> {
+            GRAPH <local:rdfs/rdfs.ttl> {
                 ?entity rdfs:label ?default_label .
             }
         }

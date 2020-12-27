@@ -65,7 +65,7 @@ a.ui.tangible.card {
                 a ?category ;
                 octa:subjectOf / octa:url ?url .
             
-            GRAPH <local:rdfs/rdfs.n3> {
+            GRAPH <local:rdfs/rdfs.ttl> {
                 ?term rdfs:label ?label .
             }
         } ORDER BY ?label

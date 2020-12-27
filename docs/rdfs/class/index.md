@@ -52,4 +52,4 @@ Classes are categories of things. One thing can belong to multiple classes if it
             }
         }
     }
-', page_iri=page|iri_by_page) | n3 }}
+', page_iri=page|iri_by_page) | turtle }}

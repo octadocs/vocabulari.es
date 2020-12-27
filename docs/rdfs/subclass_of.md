@@ -17,7 +17,7 @@ $included:
 {{ construct(
     'CONSTRUCT { ?s ?p ?o } where { graph ?g { ?s ?p ?o . } }',
     g=src_path_to_iri(page.file.src_path),
-) | n3 }}
+) | turtle }}
 
 {{ query('SELECT * WHERE { <local:opportunity> a ?type }') }}
 
