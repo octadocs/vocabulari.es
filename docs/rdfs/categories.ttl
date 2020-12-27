@@ -26,9 +26,18 @@
   a :Category ;
   :color "red" ;
   :priority 0 ;
-  rdfs:label "Classes" ;
-  :column_width "sixteen" ;
+  rdfs:label "Nodes" ;
+  :column_width "eight" ;
   rdfs:comment "Well, you know... things." .
+
+
+:Data
+  a :Category ;
+  :color "red" ;
+  :priority 0 ;
+  rdfs:label "Data" ;
+  :column_width "eight" ;
+  rdfs:comment "Descriptions of things." .
 
 
 :Containers
