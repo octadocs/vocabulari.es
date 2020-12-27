@@ -7,9 +7,9 @@ license = "MIT"
 
 [tool.poetry.dependencies]
 python = "^3.8"
-octadocs = "^0.0.1"
 mkdocs-semantic = "^0.0.6"
 requests = "^2.25.1"
+octadocs = "^0.0.2"
 
 [tool.poetry.dev-dependencies]
 
