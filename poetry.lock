@@ -293,7 +293,7 @@ description = "MkDocs wiki made smart"
 name = "octadocs"
 optional = false
 python-versions = ">=3.6,<4.0"
-version = "0.0.5"
+version = "0.0.6"
 
 [package.dependencies]
 boltons = ">=20.2.1,<21.0.0"
@@ -526,7 +526,7 @@ secure = ["pyOpenSSL (>=0.14)", "cryptography (>=1.3.4)", "idna (>=2.0.0)", "cer
 socks = ["PySocks (>=1.5.6,<1.5.7 || >1.5.7,<2.0)"]
 
 [metadata]
-content-hash = "9ca2e16693aceace26fbc9889b429b9630fa40ed43bee9f60c13e725a5a4f593"
+content-hash = "4b2ebdc3e689ddcf5cf90cfaa978af0eba856976f030ee5ef4472db63a8a726c"
 python-versions = "^3.8"
 
 [metadata.files]
@@ -693,8 +693,8 @@ nltk = [
     {file = "nltk-3.5.zip", hash = "sha256:845365449cd8c5f9731f7cb9f8bd6fd0767553b9d53af9eb1b3abf7700936b35"},
 ]
 octadocs = [
-    {file = "octadocs-0.0.5-py3-none-any.whl", hash = "sha256:ef17c456263e96901bf34f4b1fc36086f8a326895491ffb32fd0121beddfc87f"},
-    {file = "octadocs-0.0.5.tar.gz", hash = "sha256:61026b85bc649f13c85b7faa069c36e01d4dd77ac6de3c4cf0137c1cd09a395a"},
+    {file = "octadocs-0.0.6-py3-none-any.whl", hash = "sha256:720621ed2c6b7d8d72e1cf629a60994473a1217f610324077047067acb0dcaad"},
+    {file = "octadocs-0.0.6.tar.gz", hash = "sha256:e80624c7b55576c705c2ad6766c261ae55dc18bafc2e637fc0b5ca52e275ac16"},
 ]
 owlrl = [
     {file = "owlrl-5.2.1-py3-none-any.whl", hash = "sha256:2ad753f5ba6d1fe2d88bf36f427df31553f2eaa0283692e3cd06cab20ac8aec3"},
