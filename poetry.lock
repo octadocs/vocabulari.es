@@ -1,5 +1,13 @@
 [[package]]
 category = "main"
+description = "cached_property() - computed once per instance, cached as attribute"
+name = "backports.cached-property"
+optional = false
+python-versions = ">=3.6.0"
+version = "1.0.0.post2"
+
+[[package]]
+category = "main"
 description = "When they're not builtins, they're boltons."
 name = "boltons"
 optional = false
@@ -293,9 +301,10 @@ description = "MkDocs wiki made smart"
 name = "octadocs"
 optional = false
 python-versions = ">=3.6,<4.0"
-version = "0.0.7"
+version = "0.0.8"
 
 [package.dependencies]
+"backports.cached-property" = ">=1.0.0,<2.0.0"
 boltons = ">=20.2.1,<21.0.0"
 deepmerge = ">=0.1.1,<0.2.0"
 graphviz = ">=0.15,<0.16"
@@ -526,10 +535,14 @@ secure = ["pyOpenSSL (>=0.14)", "cryptography (>=1.3.4)", "idna (>=2.0.0)", "cer
 socks = ["PySocks (>=1.5.6,<1.5.7 || >1.5.7,<2.0)"]
 
 [metadata]
-content-hash = "845008d0d614478bb55c5204ebac08229d9201a584d431814a569e764a26df5f"
+content-hash = "914b060dc813a73f593723f0297515bc20dd2e845f0b20ddaf92e17bc950a344"
 python-versions = "^3.8"
 
 [metadata.files]
+"backports.cached-property" = [
+    {file = "backports.cached-property-1.0.0.post2.tar.gz", hash = "sha256:74d525451ff39a069701ed81247e708498a387eeb35043070d008e1c25ed1b0c"},
+    {file = "backports.cached_property-1.0.0.post2-py3-none-any.whl", hash = "sha256:268eb9a5c6bb74d567038d574d7c2abfdadb481522ed8c5f230c13a898472673"},
+]
 boltons = [
     {file = "boltons-20.2.1-py2.py3-none-any.whl", hash = "sha256:3dd8a8e3c1886e7f7ba3422b50f55a66e1700161bf01b919d098e7d96dd2d9b6"},
     {file = "boltons-20.2.1.tar.gz", hash = "sha256:dd362291a460cc1e0c2e91cc6a60da3036ced77099b623112e8f833e6734bdc5"},
@@ -693,8 +706,8 @@ nltk = [
     {file = "nltk-3.5.zip", hash = "sha256:845365449cd8c5f9731f7cb9f8bd6fd0767553b9d53af9eb1b3abf7700936b35"},
 ]
 octadocs = [
-    {file = "octadocs-0.0.7-py3-none-any.whl", hash = "sha256:b54548cf81bfdd23d155a5d583cc63a1c82c0a25f82fcee5586681bc4d8c0a5b"},
-    {file = "octadocs-0.0.7.tar.gz", hash = "sha256:67efc7b7262668d0e9ec0075f69829dd68250d42f757cfe8a1112d5d54c948e0"},
+    {file = "octadocs-0.0.8-py3-none-any.whl", hash = "sha256:a70fd97123651780df70a8c45eec1c51ec93a85436246f037d7ae4e31b8304c9"},
+    {file = "octadocs-0.0.8.tar.gz", hash = "sha256:72b69030999f982f97856f23300008da00caf5080fc3856a635f273c05e44c06"},
 ]
 owlrl = [
     {file = "owlrl-5.2.1-py3-none-any.whl", hash = "sha256:2ad753f5ba6d1fe2d88bf36f427df31553f2eaa0283692e3cd06cab20ac8aec3"},
