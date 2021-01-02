@@ -91,23 +91,51 @@
 
 
 {% set rules = query('
-    SELECT * WHERE {
+    SELECT DISTINCT ?given ?infer WHERE {
         ?rule a :Rule .
 
         ?rule :given ?given .
         ?rule :infer ?infer .
 
-        ?infer
-            rdf:subject ?infer_subject ;
-            rdf:predicate ?infer_predicate ;
-            rdf:object ?infer_object .
+        ?this octa:subjectOf ?page .
 
-        ?given
-            rdf:subject ?given_subject ;
-            rdf:predicate ?given_predicate ;
-            rdf:object ?given_object .
+        { ?infer rdf:subject ?this } UNION
+        { ?infer rdf:predicate ?this } UNION
+        { ?infer rdf:object ?this }
     } ORDER BY ?given
 ', page=iri) %}
+
+{% macro term(iri) %}
+    {% set meta = query('
+        SELECT * WHERE {
+            ?iri rdfs:label ?label .
+
+            OPTIONAL {
+                ?iri a :Variable .
+                ?iri :color ?color .
+                BIND(true as ?is_variable)
+            }
+
+            OPTIONAL {
+                ?iri octa:subjectOf / octa:url ?url .
+            }
+
+            OPTIONAL {
+                ?iri rdfs:isDefinedBy / :prefix ?prefix .
+            }
+        }
+    ', iri=iri) | first %}
+
+    {% if meta.is_variable %}
+        <span class="ui {{ meta.color }} label">?{{ meta.label }}</span>
+    {% else %}
+        {% if meta.url %}
+            <a href="{{ meta.url }}" class="ui grey label">{{ meta.prefix }}:{{ meta.label }}</a>
+        {% else %}
+            <span class="ui label">{{ meta.prefix }}:{{ meta.label }}</span>
+        {% endif %}
+    {% endif %}
+{% endmacro %}
 
 {% macro triple(statement) %}
     {% set triple = query('
@@ -118,11 +146,9 @@
                 rdf:predicate ?predicate ;
                 rdf:object ?object .
         }
-    ', statement=statement) %}
+    ', statement=statement) | first %}
 
-    {{ triple }}
-
-    {{ triple.subject }} {{ triple.predicate }} {{ triple.object }}
+    {{ term(triple.subject) }} {{ term(triple.predicate) }} {{ term(triple.object) }}
 {% endmacro %}
 
 {% block content %}
@@ -215,7 +241,6 @@
 
 
     <h2 class="ui header">Inference Rules</h2>
-    {{ rules }}
 
     <table class="ui table">
     <thead>

@@ -24,16 +24,26 @@ $context:
     label: rdfs:label
 
 $included:
+    - $id: "rdfs:"
+      prefix: "rdfs"
+    - $id: "rdf:"
+      prefix: "rdf"
+    - $id: "rdf:Property"
+      rdfs:isDefinedBy: "rdf:"
+
     - $id: Variable
     - $id: s
       $type: Variable
       label: subject
+      color: red
     - $id: p
       $type: Variable
       label: predicate
+      color: green
     - $id: o
       $type: Variable
-      label: object      
+      label: object
+      color: blue
 
     - $id: Rule
     - $id: given

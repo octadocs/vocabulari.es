@@ -18,3 +18,5 @@ Note: this can be illustrated by inference rules. Also, the examples of resource
 Note: Triple structure (Subject, Predicate, Object) should also be drawn somewhere. I think RDF has terms for these.
 
 Note: it is important that URI means Uniform Resource Identifier. Not Unique, because identifiers are NOT actually unique.
+
+Note: is there a standard visualization for RDFS?
