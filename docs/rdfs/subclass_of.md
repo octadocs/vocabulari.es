@@ -34,3 +34,9 @@ vegaEmbed(
 );
 </script>
 ```
+
+## Patterns
+
+- Set intersection
+- Set union
+- Set equivalence

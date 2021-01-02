@@ -15,3 +15,9 @@ symbol: 🔵
         We will fix that.</p>
     </div>
 </div>
+
+## Patterns
+
+- Property intersection
+- Property union
+

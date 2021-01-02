@@ -1,18 +1,69 @@
 ---
-label: RDF & RDFS Inference Rules
+$context:
+    subject: rdf:subject
+    predicate: rdf:predicate
+    object: rdf:object
+
+    rdfs:domain:
+        $type: $id
+    rdfs:range:
+        $type: $id
+    local:given:
+        $type: $id
+    local:infer:
+        $type: $id
+
+    label: rdfs:label
+
+$included:
+    - $id: Variable
+    - $id: s
+      $type: Variable
+      label: subject
+    - $id: p
+      $type: Variable
+      label: predicate
+    - $id: o
+      $type: Variable
+      label: object      
+
+    - $id: Rule
+    - $id: given
+      rdfs:domain: Rule
+      rdfs:range: rdf:Statement
+    - $id: infer
+      rdfs:domain: Rule
+      rdfs:range: rdf:Statement
+
+    - $id: spo
+      subject: s
+      predicate: p
+      object: o
+
+    - $id: resource_and_property
+      given: spo
+      infer:
+        - subject: p
+          predicate: rdf:type
+          object: rdf:Property
+        - subject: s
+          predicate: rdf:type
+          object: rdfs:Resource
+        - subject: o
+          predicate: rdf:type
+          object: rdfs:Resource
+
+title: RDF & RDFS Inference Rules
 ---
 
-{% include "header.md" with context %}
+# {{ title }}
 
-<div class="ui warning icon message">
-  <i class="exclamation icon"></i>
-  <div class="content">
-    <div class="header">
-      This page is not smart enough
-    </div>
-    <p>In the code of this page, inference rules are just hard coded. You cannot filter them or query them. This is going to be fixed later as we choose a formalism to properly describe these rules in the graph.</p>
-  </div>
-</div>
+{{ construct('
+    CONSTRUCT { ?s ?p ?o }
+    WHERE { GRAPH ?graph { ?s ?p ?o } }
+    ',
+    graph=page|iri_by_page
+) | turtle }}
 
 {% macro link_to(uri_ref) %}
 {% set labels = query(

@@ -27,6 +27,8 @@ $included:
         - talking
 ---
 
+In mathematical terms, `rdfs:class` is a Set of things. It can be empty.
+
 Classes are categories of things. One thing can belong to multiple classes if it wishes so.
 
 {% set get_label_for_class = '
