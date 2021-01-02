@@ -44,6 +44,10 @@ $included:
       $type: Variable
       label: object
       color: blue
+    - $id: cls
+      $type: Variable
+      label: class
+      color: purple
 
     - $id: Rule
     - $id: given
@@ -70,18 +74,21 @@ $included:
         - subject: o
           predicate: rdf:type
           object: rdfs:Resource
+    - $id: domain
+      given:
+        - spo
+        - subject: p
+          predicate: rdfs:domain
+          object: cls
+      infer:
+        subject: p
+        predicate: rdf:type
+        object: cls
 
 title: RDF & RDFS Inference Rules
 ---
 
 # {{ page.meta.title }}
-
-{{ construct('
-    CONSTRUCT { ?s ?p ?o }
-    WHERE { GRAPH ?graph { ?s ?p ?o } }
-    ',
-    graph=page|iri_by_page
-) | turtle }}
 
 {% macro link_to(uri_ref) %}
 {% set labels = query(

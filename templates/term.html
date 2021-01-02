@@ -91,7 +91,7 @@
 
 
 {% set rules = query('
-    SELECT DISTINCT ?given ?infer WHERE {
+    SELECT DISTINCT ?rule WHERE {
         ?rule a :Rule .
 
         ?rule :given ?given .
@@ -99,10 +99,15 @@
 
         ?this octa:subjectOf ?page .
 
+        # TODO This boilerplate should be simplified.
         { ?infer rdf:subject ?this } UNION
         { ?infer rdf:predicate ?this } UNION
-        { ?infer rdf:object ?this }
-    } ORDER BY ?given
+        { ?infer rdf:object ?this } UNION
+
+        { ?given rdf:subject ?this } UNION
+        { ?given rdf:predicate ?this } UNION
+        { ?given rdf:object ?this }
+    } ORDER BY ?rule
 ', page=iri) %}
 
 {% macro term(iri) %}
@@ -149,6 +154,31 @@
     ', statement=statement) | first %}
 
     {{ term(triple.subject) }} {{ term(triple.predicate) }} {{ term(triple.object) }}
+{% endmacro %}
+
+{% macro list_triples(rule, relationship) %}
+    {# FIXME awful boilerplate and repetition #}
+    {% if relationship == "given" %}
+        {% set statements = query('
+                SELECT ?statement WHERE {
+                    ?rule :given ?statement .
+                }
+            ',
+            rule=rule
+        ) %}
+    {% else %}
+        {% set statements = query('
+                SELECT ?statement WHERE {
+                    ?rule :infer ?statement .
+                }
+            ',
+            rule=rule
+        ) %}
+    {% endif %}
+
+    {% for item in statements %}
+        <p>{{ triple(item.statement) }}</p>
+    {% endfor %}
 {% endmacro %}
 
 {% block content %}
@@ -252,9 +282,13 @@
     <tbody>
     {% for rule in rules %}
         <tr>
-        <td>{{ triple(rule.given) }}</td>
+        <td>
+            {{ list_triples(rule.rule, "given") }}
+        </td>
         <td>⇒</td>
-        <td>{{ triple(rule.infer) }}</td>
+        <td>
+            {{ list_triples(rule.rule, "infer") }}
+        </td>
         </tr>
     {% endfor %}
     </tbody>
