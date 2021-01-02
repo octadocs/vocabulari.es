@@ -1,16 +1,24 @@
 ---
 $context:
-    subject: rdf:subject
-    predicate: rdf:predicate
-    object: rdf:object
+    rdf: http://www.w3.org/1999/02/22-rdf-syntax-ns#
+
+    subject:
+        $id: rdf:subject
+        $type: $id
+    predicate:
+        $id: rdf:predicate
+        $type: $id
+    object:
+        $id: rdf:object
+        $type: $id
 
     rdfs:domain:
         $type: $id
     rdfs:range:
         $type: $id
-    local:given:
+    given:
         $type: $id
-    local:infer:
+    infer:
         $type: $id
 
     label: rdfs:label
@@ -56,7 +64,7 @@ $included:
 title: RDF & RDFS Inference Rules
 ---
 
-# {{ title }}
+# {{ page.meta.title }}
 
 {{ construct('
     CONSTRUCT { ?s ?p ?o }

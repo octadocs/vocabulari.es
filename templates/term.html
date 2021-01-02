@@ -1,6 +1,5 @@
 {% extends "base.html" %}
 
-{% block content %}
 {% set headers = query(
     'SELECT ?label WHERE {
         ?entity octa:subjectOf ?iri .
@@ -36,21 +35,6 @@
     }
 ', this=this) %}
 
-{% if headers %}
-<h1 class="ui header">
-    {% if symbols %}
-        {{ symbols.0.symbol }}
-    {% endif %}
-    {{ headers.0.label }}
-    {% if summaries %}
-        <div class="sub header">
-            {{ summaries.0.summary }}
-        </div>
-    {% endif %}
-</h1>
-{% else %}
-# Page title is not available 😟
-{% endif %}
 
 {% set superclasses = query('
     SELECT ?link ?label ?link WHERE {
@@ -105,74 +89,150 @@
     ?term rdf:type rdf:Property
 }', page=iri) %}
 
-<div class="ui relaxed horizontal list">
-{% if classes %}
-    <div class="item">
-        <div class="content">
-            <div class="header">Instance of:</div>
-            {% for class in classes %}
-                {% if class.link %}
-                    <a href="{{ class.link }}">{{ class.label }}</a>{% filter trim %}
-                    {% if not loop.last %}, {% endif %}
-                    {% endfilter %}
-                {% else %}
-                    <strong>{{ class.label }}</strong>{% filter trim %}
-                    {% if not loop.last %}, {% endif %}
-                    {% endfilter %}
-                {% endif %}
-            {% endfor %}
+
+{% set rules = query('
+    SELECT * WHERE {
+        ?rule a :Rule .
+
+        ?rule :given ?given .
+        ?rule :infer ?infer .
+
+        ?infer
+            rdf:subject ?infer_subject ;
+            rdf:predicate ?infer_predicate ;
+            rdf:object ?infer_object .
+
+        ?given
+            rdf:subject ?given_subject ;
+            rdf:predicate ?given_predicate ;
+            rdf:object ?given_object .
+    } ORDER BY ?given
+', page=iri) %}
+
+{% macro triple(statement) %}
+    {% set triple = query('
+        SELECT ?subject ?predicate ?object
+        WHERE {
+            ?statement
+                rdf:subject ?subject ;
+                rdf:predicate ?predicate ;
+                rdf:object ?object .
+        }
+    ', statement=statement) %}
+
+    {{ triple }}
+
+    {{ triple.subject }} {{ triple.predicate }} {{ triple.object }}
+{% endmacro %}
+
+{% block content %}
+    {% if headers %}
+    <h1 class="ui header">
+        {% if symbols %}
+            {{ symbols.0.symbol }}
+        {% endif %}
+        {{ headers.0.label }}
+        {% if summaries %}
+            <div class="sub header">
+                {{ summaries.0.summary }}
+            </div>
+        {% endif %}
+    </h1>
+    {% else %}
+    # Page title is not available 😟
+    {% endif %}
+
+    <div class="ui relaxed horizontal list">
+    {% if classes %}
+        <div class="item">
+            <div class="content">
+                <div class="header">Instance of:</div>
+                {% for class in classes %}
+                    {% if class.link %}
+                        <a href="{{ class.link }}">{{ class.label }}</a>{% filter trim %}
+                        {% if not loop.last %}, {% endif %}
+                        {% endfilter %}
+                    {% else %}
+                        <strong>{{ class.label }}</strong>{% filter trim %}
+                        {% if not loop.last %}, {% endif %}
+                        {% endfilter %}
+                    {% endif %}
+                {% endfor %}
+            </div>
         </div>
-    </div>
-{% endif %}
+    {% endif %}
 
-{% if superclasses %}
-    <div class="item">
-        <div class="content">
-            <div class="header">Subclass of:</div>
-            {% for superclass in superclasses %}
-                {% if superclass.link %}
-                    <a href="{{ superclass.link }}">{{ superclass.label }}</a>{% filter trim %}
-                    {% if not loop.last %}, {% endif %}
-                    {% endfilter %}
-                {% else %}
-                    <strong>{{ superclass.label }}</strong>{% filter trim %}
-                    {% if not loop.last %}, {% endif %}
-                    {% endfilter %}
-                {% endif %}
-            {% endfor %}
+    {% if superclasses %}
+        <div class="item">
+            <div class="content">
+                <div class="header">Subclass of:</div>
+                {% for superclass in superclasses %}
+                    {% if superclass.link %}
+                        <a href="{{ superclass.link }}">{{ superclass.label }}</a>{% filter trim %}
+                        {% if not loop.last %}, {% endif %}
+                        {% endfilter %}
+                    {% else %}
+                        <strong>{{ superclass.label }}</strong>{% filter trim %}
+                        {% if not loop.last %}, {% endif %}
+                        {% endfilter %}
+                    {% endif %}
+                {% endfor %}
+            </div>
         </div>
-    </div>
-{% endif %}
+    {% endif %}
 
-{% if is_property %}
-    <div class="item">
-        <div class="content">
-            <div class="header">Property:</div>
-            {% for domain in domains %}
-                {% if domain.link %}
-                    <a href="{{ domain.link }}">{{ domain.label }}</a>
-                {% else %}
-                    <strong>{{ domain.label }}</strong>
-                {% endif %}
-                {% if loop.revindex == 2 %} or {% elif not loop.last %}, {% endif %}
-            {% endfor %}
+    {% if is_property %}
+        <div class="item">
+            <div class="content">
+                <div class="header">Property:</div>
+                {% for domain in domains %}
+                    {% if domain.link %}
+                        <a href="{{ domain.link }}">{{ domain.label }}</a>
+                    {% else %}
+                        <strong>{{ domain.label }}</strong>
+                    {% endif %}
+                    {% if loop.revindex == 2 %} or {% elif not loop.last %}, {% endif %}
+                {% endfor %}
 
-            →
+                →
 
-            {% for range in ranges %}
-                {% if range.link %}
-                    <a href="{{ range.link }}">{{ range.label }}</a>
-                {% else %}
-                    <strong>{{ range.label }}</strong>
-                {% endif %}
-                {% if loop.revindex == 2 %} or {% elif not loop.last %}, {% endif %}
-            {% endfor %}
+                {% for range in ranges %}
+                    {% if range.link %}
+                        <a href="{{ range.link }}">{{ range.label }}</a>
+                    {% else %}
+                        <strong>{{ range.label }}</strong>
+                    {% endif %}
+                    {% if loop.revindex == 2 %} or {% elif not loop.last %}, {% endif %}
+                {% endfor %}
+            </div>
         </div>
+    {% endif %}
     </div>
-{% endif %}
-</div>
 
-<div class="ui horizontal divider"></div>
+    <div class="ui horizontal divider"></div>
 
-{{ super() }}
+    {{ super() }}
+
+
+    <h2 class="ui header">Inference Rules</h2>
+    {{ rules }}
+
+    <table class="ui table">
+    <thead>
+        <tr>
+            <th colspan="2">Given</th>
+            <th>Inferred</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for rule in rules %}
+        <tr>
+        <td>{{ triple(rule.given) }}</td>
+        <td>⇒</td>
+        <td>{{ triple(rule.infer) }}</td>
+        </tr>
+    {% endfor %}
+    </tbody>
+    </table>
+
 {% endblock %}
