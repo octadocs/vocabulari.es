@@ -1,0 +1,112 @@
+{% macro term(iri) %}
+    {% set meta = query('
+        SELECT * WHERE {
+            ?iri rdfs:label ?label .
+
+            OPTIONAL {
+                ?iri a :Variable .
+                ?iri :color ?color .
+                BIND(true as ?is_variable)
+            }
+
+            OPTIONAL {
+                ?iri octa:subjectOf / octa:url ?url .
+            }
+
+            OPTIONAL {
+                ?iri rdfs:isDefinedBy / :prefix ?prefix .
+            }
+        }
+    ', iri=iri) | first %}
+
+    {% if meta.is_variable %}
+        <span class="ui {{ meta.color }} label">?{{ meta.label }}</span>
+    {% else %}
+        {% if meta.url %}
+            <a href="{{ meta.url }}"
+               class="ui grey label">{{ meta.prefix }}:{{ meta.label }}</a>
+        {% else %}
+            <span class="ui label">{{ meta.prefix }}:{{ meta.label }}</span>
+        {% endif %}
+    {% endif %}
+{% endmacro %}
+
+
+{% macro list_triples(rule, relationship) %}
+    {# FIXME awful boilerplate and repetition #}
+    {% if relationship == "given" %}
+        {% set statements = query('
+                SELECT * WHERE {
+                    ?rule :given ?statement .
+                    ?statement
+                        rdf:subject ?subject ;
+                        rdf:predicate ?predicate ;
+                        rdf:object ?object .
+                }
+            ',
+            rule=rule
+        ) %}
+    {% else %}
+        {% set statements = query('
+                SELECT * WHERE {
+                    ?rule :infer ?statement .
+                    ?statement
+                        rdf:subject ?subject ;
+                        rdf:predicate ?predicate ;
+                        rdf:object ?object .
+                }
+            ',
+            rule=rule
+        ) %}
+    {% endif %}
+
+    {% for item in statements %}
+        <p>
+        {{ term(item.subject) }} {{ term(item.predicate) }} {{ term(item.object) }}
+        </p>
+    {% endfor %}
+{% endmacro %}
+
+
+{% macro inference_rules(this) %}
+    {% set rules = query('
+        SELECT DISTINCT ?rule WHERE {
+            ?rule a :Rule .
+
+            ?rule :given ?given .
+            ?rule :infer ?infer .
+
+            # TODO This boilerplate should be simplified.
+            { ?infer rdf:subject ?this } UNION
+            { ?infer rdf:predicate ?this } UNION
+            { ?infer rdf:object ?this } UNION
+
+            { ?given rdf:subject ?this } UNION
+            { ?given rdf:predicate ?this } UNION
+            { ?given rdf:object ?this }
+        } ORDER BY ?rule
+    ', this=this) %}
+
+    <h2 class="ui header">Inference Rules</h2>
+    <table class="ui table">
+        <thead>
+        <tr>
+            <th colspan="2">Given</th>
+            <th>Inferred</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for rule in rules %}
+            <tr>
+                <td>
+                    {{ list_triples(rule.rule, "given") }}
+                </td>
+                <td>⇒</td>
+                <td>
+                    {{ list_triples(rule.rule, "infer") }}
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endmacro %}

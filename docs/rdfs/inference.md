@@ -1,16 +1,4 @@
 ---
-$included:
-    - $id: domain
-      given:
-        - spo
-        - subject: p
-          predicate: rdfs:domain
-          object: cls
-      infer:
-        subject: p
-        predicate: rdf:type
-        object: cls
-
 title: RDF & RDFS Inference Rules
 ---
 

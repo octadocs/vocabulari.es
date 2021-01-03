@@ -4,9 +4,12 @@ infer:
   - subject: p
     predicate: rdf:type
     object: rdf:Property
+    $id: spo1
   - subject: s
     predicate: rdf:type
     object: rdfs:Resource
+    $id: spo2
   - subject: o
     predicate: rdf:type
     object: rdfs:Resource
+    $id: spo3
