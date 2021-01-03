@@ -1,0 +1,44 @@
+# Define prefixes for vocabularies
+- $id: "rdfs:"
+  prefix: "rdfs"
+- $id: "rdf:"
+  prefix: "rdf"
+- $id: "rdf:Property"
+  rdfs:isDefinedBy: "rdf:"
+
+# What is a variable? Define a few variables.
+- $id: Variable
+- $id: s
+  $type: Variable
+  label: subject
+  color: red
+- $id: p
+  $type: Variable
+  label: predicate
+  color: green
+- $id: o
+  $type: Variable
+  label: object
+  color: blue
+- $id: cls
+  $type: Variable
+  label: class
+  color: purple
+
+# Now, what is an inference Rule?
+- $id: Rule
+  $type: rdfs:Class
+- $id: given
+  rdfs:domain: Rule
+  rdfs:range: rdf:Statement
+- $id: infer
+  rdfs:domain: Rule
+  rdfs:range: rdf:Statement
+
+# A most often used statement which consists of three variables.
+# I do not even have to say it is a Rule - it has a subject, predicate, and
+# object, so the type is auto inferred.
+- $id: spo
+  subject: s
+  predicate: p
+  object: o
