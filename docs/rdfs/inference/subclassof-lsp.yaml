@@ -1,0 +1,17 @@
+- $id: sub_class
+  $type: Variable
+  color: violet
+  label: sub_class
+
+- label: Every rdfs:Class can be replaced with its superclass
+  given:
+    - subject: s
+      predicate: rdf:type
+      object: sub_class
+    - subject: sub_class
+      predicate: rdfs:subClassOf
+      object: cls
+  infer:
+    subject: s
+    predicate: rdf:type
+    object: cls

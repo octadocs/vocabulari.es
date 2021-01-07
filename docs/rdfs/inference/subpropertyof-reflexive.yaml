@@ -1,0 +1,9 @@
+label: rdfs:subPropertyOf is reflexive
+given:
+  - subject: p
+    predicate: rdf:type
+    object: rdf:Property
+infer:
+  subject: p
+  predicate: rdfs:subPropertyOf
+  object: p

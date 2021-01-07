@@ -20,10 +20,24 @@
   $type: Variable
   label: object
   color: blue
+
 - $id: cls
   $type: Variable
   label: class
   color: purple
+
+- $id: x
+  $type: Variable
+  label: x
+  color: orange
+- $id: y
+  $type: Variable
+  label: y
+  color: teal
+- $id: z
+  $type: Variable
+  label: z
+  color: violet
 
 # Now, what is an inference Rule?
 - $id: Rule
@@ -35,9 +49,7 @@
   rdfs:domain: Rule
   rdfs:range: rdf:Statement
 
-# A most often used statement which consists of three variables.
-# I do not even have to say it is a Rule - it has a subject, predicate, and
-# object, so the type is auto inferred.
+# An often used statement which consists of three variables.
 - $id: spo
   subject: s
   predicate: p

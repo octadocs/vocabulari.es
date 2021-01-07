@@ -1,5 +1,5 @@
 {% macro term(iri) %}
-    {% set meta = query('
+    {% set metas = query('
         SELECT * WHERE {
             ?iri rdfs:label ?label .
 
@@ -17,17 +17,27 @@
                 ?iri rdfs:isDefinedBy / :prefix ?prefix .
             }
         }
-    ', iri=iri) | first %}
+    ', iri=iri) %}
 
-    {% if meta.is_variable %}
-        <span class="ui {{ meta.color }} label">?{{ meta.label }}</span>
+    {% if metas %}
+        {% set meta = metas|first %}
     {% else %}
-        {% if meta.url %}
-            <a href="{{ meta.url }}"
-               class="ui grey label">{{ meta.prefix }}:{{ meta.label }}</a>
+        {% set meta = None %}
+    {% endif %}
+
+    {% if meta %}
+        {% if meta.is_variable %}
+            <span class="ui {{ meta.color }} label">?{{ meta.label }}</span>
         {% else %}
-            <span class="ui label">{{ meta.prefix }}:{{ meta.label }}</span>
+            {% if meta.url %}
+                <a href="{{ meta.url }}"
+                   class="ui grey label">{{ meta.prefix }}:{{ meta.label }}</a>
+            {% else %}
+                <span class="ui label">{{ meta.prefix }}:{{ meta.label }}</span>
+            {% endif %}
         {% endif %}
+    {% else %}
+        ?
     {% endif %}
 {% endmacro %}
 

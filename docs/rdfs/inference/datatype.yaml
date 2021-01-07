@@ -1,0 +1,14 @@
+label: Every rdfs:Datatype is subclass of rdfs:Literal
+given:
+  subject: datatype
+  predicate: rdf:type
+  object: rdfs:Datatype
+infer:
+  subject: datatype
+  predicate: rdfs:subClassOf
+  object: rdfs:Literal
+variables:
+  $id: datatype
+  $type: Variable
+  color: orange
+  label: datatype

@@ -1,13 +1,10 @@
-label: If domain is declared for a property, every subject used for that property belongs to the said domain.
-$id: domain
+label: If a domain is declared for a property, every subject used for that property belongs to the said domain.
 given:
   - spo
-  - $id: domain1
-    subject: p
+  - subject: p
     predicate: rdfs:domain
     object: cls
 infer:
-  $id: domain2
-  subject: p
+  subject: s
   predicate: rdf:type
   object: cls

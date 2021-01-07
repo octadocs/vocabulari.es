@@ -1,0 +1,12 @@
+label: rdfs:subPropertyOf is transitive
+given:
+  - subject: x
+    predicate: rdfs:subPropertyOf
+    object: y
+  - subject: y
+    predicate: rdfs:subPropertyOf
+    object: z
+infer:
+  subject: x
+  predicate: rdfs:subPropertyOf
+  object: z

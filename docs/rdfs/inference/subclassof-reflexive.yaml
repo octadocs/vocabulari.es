@@ -1,0 +1,9 @@
+label: rdfs:subClassOf is reflexive
+given:
+  - subject: cls
+    predicate: rdf:type
+    object: rdfs:Class
+infer:
+  subject: cls
+  predicate: rdfs:subClassOf
+  object: cls

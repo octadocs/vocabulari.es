@@ -1,0 +1,9 @@
+label: Every rdfs:ContainerMembershipProperty is subproperty of rdfs:member
+given:
+  subject: p
+  predicate: rdf:type
+  object: rdfs:ContainerMembershipProperty
+infer:
+  subject: p
+  predicate: rdfs:subPropertyOf
+  object: rdfs:member

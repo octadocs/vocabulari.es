@@ -1,7 +1,6 @@
 ---
 $id: rdfs:subClassOf
 $type: Sub
-label: SubClass Of
 symbol: ⊂
 
 $included:

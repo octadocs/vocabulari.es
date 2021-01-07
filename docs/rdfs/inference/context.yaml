@@ -22,3 +22,4 @@ infer:
   $type: $id
 
 label: rdfs:label
+variables: $included

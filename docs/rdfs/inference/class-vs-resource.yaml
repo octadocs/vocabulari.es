@@ -1,0 +1,9 @@
+label: Every class is a subclass of rdfs:Resource
+given:
+  subject: cls
+  predicate: rdf:type
+  object: rdfs:Class
+infer:
+  subject: cls
+  predicate: rdfs:subClassOf
+  object: rdfs:Resource

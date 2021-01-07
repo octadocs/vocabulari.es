@@ -1,0 +1,10 @@
+label: If a range is declared for a property, every object used for that property belongs to the said range.
+given:
+  - spo
+  - subject: p
+    predicate: rdfs:range
+    object: cls
+infer:
+  subject: o
+  predicate: rdf:type
+  object: cls
