@@ -1,21 +1,21 @@
-- $id: child_class
-  $type: Variable
-  color: orange
-  label: child_class
-- $id: super_class
-  $type: Variable
-  color: violet
-  label: super_class
-
-- label: rdfs:subClassOf is transitive
-  given:
-    - subject: child_class
-      predicate: rdfs:subClassOf
-      object: cls
-    - subject: cls
-      predicate: rdfs:subClassOf
-      object: super_class
-  infer:
-    subject: child_class
+label: rdfs:subClassOf is transitive
+given:
+  - subject: subclass
+    predicate: rdfs:subClassOf
+    object: cls
+  - subject: cls
     predicate: rdfs:subClassOf
     object: super_class
+infer:
+  subject: subclass
+  predicate: rdfs:subClassOf
+  object: super_class
+variables:
+  - $id: subclass
+    $type: Variable
+    color: pink
+    label: subclass
+  - $id: super_class
+    $type: Variable
+    color: violet
+    label: super_class

@@ -26,19 +26,6 @@
   label: class
   color: purple
 
-- $id: x
-  $type: Variable
-  label: x
-  color: orange
-- $id: y
-  $type: Variable
-  label: y
-  color: teal
-- $id: z
-  $type: Variable
-  label: z
-  color: violet
-
 # Now, what is an inference Rule?
 - $id: Rule
   $type: rdfs:Class

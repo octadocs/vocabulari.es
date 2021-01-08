@@ -1,4 +1,4 @@
-label: Every class is a subclass of rdfs:Resource
+label: Every rdfs:Class is a subclass of rdfs:Resource
 given:
   subject: cls
   predicate: rdf:type

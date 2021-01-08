@@ -27,17 +27,17 @@
 
     {% if meta %}
         {% if meta.is_variable %}
-            <span class="ui {{ meta.color }} label">?{{ meta.label }}</span>
+            <span class="step {{ meta.color }}">?{{ meta.label }}</span>
         {% else %}
             {% if meta.url %}
                 <a href="{{ meta.url }}"
-                   class="ui grey label">{{ meta.prefix }}:{{ meta.label }}</a>
+                   class="step grey">{{ meta.prefix }}:{{ meta.label }}</a>
             {% else %}
-                <span class="ui label">{{ meta.prefix }}:{{ meta.label }}</span>
+                <span class="step">{{ meta.prefix }}:{{ meta.label }}</span>
             {% endif %}
         {% endif %}
     {% else %}
-        ?
+        <span class="step">?</span>
     {% endif %}
 {% endmacro %}
 
@@ -71,17 +71,22 @@
     {% endif %}
 
     {% for item in statements %}
-        <p>
-        {{ term(item.subject) }} {{ term(item.predicate) }} {{ term(item.object) }}
-        </p>
+        <!--p class="ui labels">
+            {{ term(item.subject) }} {{ term(item.predicate) }} {{ term(item.object) }}
+        </p-->
+
+        <div class="ui three steps">
+            {{ term(item.subject) }} {{ term(item.predicate) }} {{ term(item.object) }}
+        </div>
     {% endfor %}
 {% endmacro %}
 
 
 {% macro inference_rules(this) %}
     {% set rules = query('
-        SELECT DISTINCT ?rule WHERE {
+        SELECT DISTINCT ?rule ?label WHERE {
             ?rule a :Rule .
+            ?rule rdfs:label ?label .
 
             ?rule :given ?given .
             ?rule :infer ?infer .
@@ -97,26 +102,64 @@
         } ORDER BY ?rule
     ', this=this) %}
 
-    <h2 class="ui header">Inference Rules</h2>
-    <table class="ui table">
-        <thead>
-        <tr>
-            <th colspan="2">Given</th>
-            <th>Inferred</th>
-        </tr>
-        </thead>
-        <tbody>
+    {% if rules %}
+        <h2 class="ui header">Inference Rules</h2>
+
+        <style>
+            .ui.steps .step.orange,
+            .ui.steps .step.orange::after {
+                background-color: orange;
+            }
+
+            .ui.steps .step.grey,
+            .ui.steps .step.grey::after {
+                background-color: lightgrey;
+            }
+
+            .ui.steps .step.pink,
+            .ui.steps .step.pink::after {
+                background-color: pink;
+            }
+
+            .ui.steps .step.red,
+            .ui.steps .step.red::after {
+                background-color: red;
+            }
+
+            .ui.steps .step.purple,
+            .ui.steps .step.purple::after {
+                background-color: purple;
+            }
+
+            .ui.steps .step.violet,
+            .ui.steps .step.violet::after {
+                background-color: violet;
+            }
+        </style>
+
         {% for rule in rules %}
-            <tr>
-                <td>
-                    {{ list_triples(rule.rule, "given") }}
-                </td>
-                <td>⇒</td>
-                <td>
-                    {{ list_triples(rule.rule, "infer") }}
-                </td>
-            </tr>
+            <h3 class="ui header">{{ rule.label }}</h3>
+            <div class="ui segments">
+                <div class="ui content segment">
+                    <div class="ui two column very relaxed grid">
+                        <div class="column">
+                            {{ list_triples(rule.rule, "given") }}
+                        </div>
+                        <div class="column">
+                            {{ list_triples(rule.rule, "infer") }}
+                        </div>
+                    </div>
+                    <div class="ui vertical divider grey header">
+                        ⇒
+                    </div>
+                </div>
+                {#
+                <!--div class="ui secondary segment align-right">
+                    Links & Tags
+                </div-->
+                #}
+            </div>
+            <br/><br/>
         {% endfor %}
-        </tbody>
-    </table>
+    {% endif %}
 {% endmacro %}

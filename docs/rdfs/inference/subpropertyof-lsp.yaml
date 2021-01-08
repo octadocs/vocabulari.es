@@ -1,21 +1,12 @@
-- $id: sub_property
-  $type: Variable
-  color: brown
-  label: sub_property
-- $id: super_property
-  $type: Variable
-  color: black
-  label: super_property
-
-- label: Every rdf:Property can be replaced with its super property
-  given:
-    - subject: s
-      predicate: sub_property
-      object: o
-    - subject: sub_property
-      predicate: rdfs:subPropertyOf
-      object: super_property
-  infer:
-    subject: s
-    predicate: super_property
+label: Every rdf:Property can be replaced with its super property
+given:
+  - subject: s
+    predicate: sub_property
     object: o
+  - subject: sub_property
+    predicate: rdfs:subPropertyOf
+    object: super_property
+infer:
+  subject: s
+  predicate: super_property
+  object: o

@@ -1,12 +1,25 @@
 label: rdfs:subPropertyOf is transitive
 given:
-  - subject: x
+  - subject: sub_property
     predicate: rdfs:subPropertyOf
-    object: y
-  - subject: y
+    object: property
+  - subject: property
     predicate: rdfs:subPropertyOf
-    object: z
+    object: super_property
 infer:
-  subject: x
+  subject: sub_property
   predicate: rdfs:subPropertyOf
-  object: z
+  object: super_property
+variables:
+  - $id: sub_property
+    $type: Variable
+    color: pink
+    label: sub_property
+  - $id: property
+    $type: Variable
+    color: purple
+    label: property
+  - $id: super_property
+    $type: Variable
+    color: violet
+    label: super_property
