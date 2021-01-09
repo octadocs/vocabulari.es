@@ -92,18 +92,25 @@
 }', page=iri) %}
 
 {% block content %}
+    <div class="ui clearing segment">
     {% if headers %}
     <h1 class="ui header">
-        {% if symbols %}
-            {{ symbols.0.symbol }}
-        {% endif %}
-        {{ headers.0.label }}
+        <a href="/rdfs/">rdfs:</a>{% filter trim %}
+        {% endfilter %}{{ headers.0.label }}
+
         {% if summaries %}
             <div class="sub header">
                 {{ summaries.0.summary }}
             </div>
         {% endif %}
     </h1>
+
+    {% if symbols %}
+        <div class="ui huge left floated header" style="font-size: 4em">
+            {{ symbols.0.symbol }}
+        </div>
+    {% endif %}
+
     {% else %}
     # Page title is not available 😟
     {% endif %}
@@ -176,6 +183,7 @@
     </div>
 
     <div class="ui horizontal divider"></div>
+    </div>
 
     {{ super() }}
 

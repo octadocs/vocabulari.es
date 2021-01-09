@@ -13,13 +13,13 @@ infer:
 variables:
   - $id: sub_property
     $type: Variable
-    color: pink
+    color: orange
     label: sub_property
   - $id: property
     $type: Variable
-    color: purple
+    color: green
     label: property
   - $id: super_property
     $type: Variable
-    color: violet
+    color: purple
     label: super_property

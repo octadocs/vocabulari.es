@@ -13,9 +13,9 @@ infer:
 variables:
   - $id: subclass
     $type: Variable
-    color: pink
+    color: yellow
     label: subclass
   - $id: super_class
     $type: Variable
-    color: violet
+    color: purple
     label: super_class

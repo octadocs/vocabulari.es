@@ -24,7 +24,7 @@
 - $id: cls
   $type: Variable
   label: class
-  color: purple
+  color: blue
 
 # Now, what is an inference Rule?
 - $id: Rule
