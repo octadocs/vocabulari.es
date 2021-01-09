@@ -1,7 +1,15 @@
 {% macro term(iri) %}
     {% set metas = query('
         SELECT * WHERE {
-            ?iri rdfs:label ?label .
+            OPTIONAL {
+                ?iri skos:preflabel ?custom_label .
+            }
+
+            OPTIONAL {
+                ?iri rdfs:label ?default_label .
+            }
+
+            BIND(COALESCE(?custom_label, ?default_label) AS ?label)
 
             OPTIONAL {
                 ?iri a :Variable .

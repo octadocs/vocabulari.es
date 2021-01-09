@@ -1,7 +1,7 @@
 ---
 $id: rdfs:subPropertyOf
 $type: Sub
-label: sub&shy;Property&shy;Of
+prefLabel: sub&shy;Property&shy;Of
 symbol: ⊆
 ---
 

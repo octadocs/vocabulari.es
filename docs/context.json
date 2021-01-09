@@ -10,5 +10,6 @@
   },
   "rdfs:subClassOf": {
     "@type": "@id"
-  }
+  },
+  "prefLabel": "skos:prefLabel"
 }
