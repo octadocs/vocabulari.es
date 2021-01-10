@@ -1,0 +1,8 @@
+# Header of a vocabulary.
+# Expects: ?this
+SELECT * WHERE {
+    ?this
+        skos:prefLabel ?label ;
+        rdfs:comment ?comment ;
+        :prefix ?prefix .
+}

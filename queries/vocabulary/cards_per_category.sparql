@@ -1,0 +1,8 @@
+# Fetch all terms per category.
+# Expects: ?category
+SELECT * WHERE {
+    ?term
+        a ?category ;
+        octa:subjectOf / octa:url ?url ;
+        rdfs:label ?label .
+} ORDER BY ?label

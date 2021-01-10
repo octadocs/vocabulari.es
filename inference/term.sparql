@@ -1,0 +1,6 @@
+# Every term of a vocabulary (i.e. ontology) should be rendered with term.html template.
+INSERT {
+    ?page octa:template "term.html" .
+} WHERE {
+    ?page octa:about / rdfs:isDefinedBy / rdf:type owl:Ontology .
+}

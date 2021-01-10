@@ -1,0 +1,6 @@
+# Every vocabulary should be rendered with vocabulary.html template.
+INSERT {
+    ?page octa:template "vocabulary.html" .
+} WHERE {
+    ?page octa:about / rdf:type owl:Ontology .
+}
