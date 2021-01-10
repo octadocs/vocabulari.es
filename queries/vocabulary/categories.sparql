@@ -1,0 +1,7 @@
+SELECT * WHERE {
+    ?iri
+        a :Category ;
+        :priority ?priority ;
+        rdfs:label ?label ;
+        :column_width ?column_width .
+} ORDER BY ?priority

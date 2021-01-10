@@ -1,0 +1,11 @@
+# Fetch all terms per category.
+# Expects: ?category
+SELECT * WHERE {
+    ?term
+        a ?category ;
+        octa:subjectOf / octa:url ?url .
+
+    GRAPH <local:rdfs/rdfs.ttl> {
+        ?term rdfs:label ?label .
+    }
+} ORDER BY ?label
