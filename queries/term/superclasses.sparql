@@ -1,7 +1,0 @@
-# Superclasses of this class, in printable form.
-# Expects: ?this
-SELECT ?link ?label WHERE {
-    ?this rdfs:subClassOf ?superclass .
-    ?superclass rdfs:label ?label .
-    ?superclass octa:subjectOf/octa:url ?link .
-} ORDER BY ?label
