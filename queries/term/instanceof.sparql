@@ -1,0 +1,7 @@
+# Classes to which the object belongs, in printable form.
+# Expects: ?this
+SELECT ?link ?label WHERE {
+    ?this a ?class .
+    ?class rdfs:label ?label .
+    ?class octa:subjectOf/octa:url ?link .
+} ORDER BY ?label

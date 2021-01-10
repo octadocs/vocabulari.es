@@ -1,0 +1,9 @@
+# Determine domain or range of given Property.
+# Expects: ?this, ?relation
+SELECT ?label ?link WHERE {
+    ?this ?relation ?class .
+
+    ?class
+        rdfs:label ?label ;
+        octa:subjectOf / octa:url ?link .
+}

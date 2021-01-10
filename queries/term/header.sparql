@@ -1,0 +1,23 @@
+# Fetch label, symbol, and summary for a resource.
+# Expects: ?this
+SELECT ?label ?symbol ?summary WHERE {
+    ?this rdfs:label ?label ;
+
+    OPTIONAL {
+        ?this :symbol ?symbol .
+    }
+
+    OPTIONAL {
+        GRAPH ?page {
+            ?this rdfs:comment ?readable_summary .
+        }
+
+        ?page octa:subjectOf ?this .
+    }
+
+    GRAPH <local:rdfs/rdfs.ttl> {
+        ?this rdfs:comment ?default_summary .
+    }
+
+    BIND(COALESCE(?readable_summary, ?default_summary) AS ?summary)
+}

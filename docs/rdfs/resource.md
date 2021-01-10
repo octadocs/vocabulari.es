@@ -2,7 +2,7 @@
 $id: rdfs:Resource
 $type: Entities
 comment: Any object you can talk about using RDF.
-symbol: 🕸️
+symbol: ∃
 ---
 
 Resource is anything that you might want to talk about. It defines the term RDF - Resource Description Framework - itself.

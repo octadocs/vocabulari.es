@@ -1,0 +1,5 @@
+# Determine whether this is an rdf:Property.
+# Expects: ?this
+ASK {
+    ?this rdf:type rdf:Property .
+}
