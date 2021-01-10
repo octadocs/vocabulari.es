@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% set header = q.vocabulary.header(this=this).first %}
-{% set categories = q.vocabulary.categories() %}
+{% set categories = q.vocabulary.categories(vocabulary=this) %}
 
 {% macro cards_for_category(category) %}
     {% set cards_per_category = q.vocabulary.cards_per_category(category=category) %}
@@ -63,7 +63,11 @@
         </div>
     </div>
 
-    <br/>
+    <div class="ui hidden divider"></div>
+
+    {{ super() }}
+
+    <div class="ui hidden divider"></div>
 
     <div class="ui grid">
         {% for category in categories %}
@@ -73,6 +77,4 @@
         </div>
         {% endfor %}
     </div>
-
-    {{ super() }}
 {% endblock %}
