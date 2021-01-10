@@ -3,17 +3,25 @@
 {% import "inference.html" as inference with context %}
 
 {% set header = queries.term.header(this=this).first %}
-{% set classes = queries.term.instanceof(this=this) %}
-{% set superclasses = queries.term.superclasses(this=this) %}
 {% set is_property = queries.term.is_property(this=this) %}
 
-{% macro related(related_objects, title) %}
+{%- macro link(iri) -%}
+    {# Print clickable link to the given term. #}
+    {% set link = queries.term.link(thing=iri).first %}
+    {% if link %}
+        <a href="{{ link.url }}">{{ link.symbol }}</a> {{ link.title }}
+    {% endif %}
+{%- endmacro -%}
+
+{% macro meta(relation) %}
+    {% set related_objects = queries.term.meta(this=this, relation=relation) %}
+
     {% if related_objects %}
         <div class="item">
             <div class="content">
-                <div class="header">{{ title }}:</div>
-                {% for class in classes %}
-                    <a href="{{ class.link }}">{{ class.label }}</a>{% filter trim %}
+                <div class="header">{{ link(relation) }}:</div>
+                {% for object in related_objects %}
+                    <a href="{{ object.link }}">{{ object.label }}</a>{% filter trim %}
                     {% if not loop.last %}, {% endif %}
                     {% endfilter %}
                 {% endfor %}
@@ -45,8 +53,8 @@
         </div>
 
         <div class="ui relaxed horizontal list">
-            {{ related(classes, "Instance Of") }}
-            {{ related(superclasses, "Subclass Of") }}
+            {{ meta(rdf.type) }}
+            {{ meta(rdfs.subClassOf) }}
 
             {% if is_property %}
                 <div class="item">
@@ -57,6 +65,8 @@
                         {{ domains_or_ranges(this, rdfs.range) }}
                     </div>
                 </div>
+
+                {{ meta(rdfs.subPropertyOf) }}
             {% endif %}
         </div>
     </div>

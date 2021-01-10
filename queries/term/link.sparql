@@ -1,0 +1,8 @@
+# By a thing, find its page, its title, symbol, and link to it
+# Expects: ?thing
+SELECT ?url ?title ?symbol WHERE {
+    ?thing
+        octa:subjectOf / octa:url ?url ;
+        rdfs:label ?title ;
+        :symbol ?symbol .
+}
