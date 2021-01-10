@@ -1,0 +1,6 @@
+# If a ?thing has an octa:title, every octa:Page linked to that ?thing has the same ?title.
+INSERT {
+    ?page octa:title ?title .
+} WHERE {
+    ?page octa:about / octa:title ?title .
+}

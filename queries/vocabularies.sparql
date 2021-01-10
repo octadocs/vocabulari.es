@@ -2,7 +2,7 @@ SELECT * WHERE {
     ?ontology
         a owl:Ontology ;
 
-        skos:prefLabel ?title ;
+        octa:title ?title ;
         rdfs:comment ?description ;
 
         schema:image / octa:url ?image ;

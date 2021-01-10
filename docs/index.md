@@ -1,3 +1,7 @@
+---
+title: Vocabularies
+---
+
 <h1 class="ui header">
     Welcome!
     <div class="sub header">This is a cheat sheet and a quick reference guide to a few most common Linked Data / Semantic Web vocabularies.</div>

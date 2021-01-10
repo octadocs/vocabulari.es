@@ -1,6 +1,6 @@
 ---
 $id: "rdf:"
-prefLabel: RDF
+title: RDF
 rdfs:comment: Resource Description Framework
 
 prefix: "rdf"

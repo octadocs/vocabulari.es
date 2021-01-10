@@ -2,7 +2,7 @@
 # Expects: ?this
 SELECT * WHERE {
     ?this
-        skos:prefLabel ?label ;
+        octa:title ?label ;
         rdfs:comment ?comment ;
         :prefix ?prefix .
 }

@@ -2,7 +2,7 @@
     {% set metas = query('
         SELECT * WHERE {
             OPTIONAL {
-                ?iri skos:preflabel ?custom_label .
+                ?iri octa:title ?custom_label .
             }
 
             OPTIONAL {

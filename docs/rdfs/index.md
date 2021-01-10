@@ -1,7 +1,7 @@
 ---
 $id: "rdfs:"
 
-prefLabel: RDF Schema
+title: RDF Schema
 rdfs:comment: Basic notions of classes, properties, and relations between them.
 
 prefix: "rdfs"

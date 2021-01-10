@@ -11,6 +11,6 @@
   "rdfs:subClassOf": {
     "@type": "@id"
   },
-  "prefLabel": "skos:prefLabel",
+  "title": "octa:title",
   "position": "octa:position"
 }
