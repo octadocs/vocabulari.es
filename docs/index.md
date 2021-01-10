@@ -17,7 +17,7 @@ title: Vocabularies
 
 <br/>
 
-{% set cards = q.vocabularies() %}
+{% set cards = queries.vocabularies() %}
 
 <div class="ui four cards">
 {% for card in cards %}

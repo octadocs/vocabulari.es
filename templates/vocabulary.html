@@ -1,10 +1,10 @@
 {% extends "base.html" %}
 
-{% set header = q.vocabulary.header(this=this).first %}
-{% set categories = q.vocabulary.categories(vocabulary=this) %}
+{% set header = queries.vocabulary.header(this=this).first %}
+{% set categories = queries.vocabulary.categories(vocabulary=this) %}
 
 {% macro cards_for_category(category) %}
-    {% set cards_per_category = q.vocabulary.cards_per_category(category=category) %}
+    {% set cards_per_category = queries.vocabulary.cards_per_category(category=category) %}
 
     {% set card_count = {
         1: "one",

@@ -2,10 +2,10 @@
 
 {% import "inference.html" as inference with context %}
 
-{% set header = q.term.header(this=this).first %}
-{% set classes = q.term.instanceof(this=this) %}
-{% set superclasses = q.term.superclasses(this=this) %}
-{% set is_property = q.term.is_property(this=this) %}
+{% set header = queries.term.header(this=this).first %}
+{% set classes = queries.term.instanceof(this=this) %}
+{% set superclasses = queries.term.superclasses(this=this) %}
+{% set is_property = queries.term.is_property(this=this) %}
 
 {% macro related(related_objects, title) %}
     {% if related_objects %}
@@ -23,7 +23,7 @@
 {% endmacro %}
 
 {% macro domains_or_ranges(this, relation) %}
-    {% for class in q.term.domain_and_range(this=this, relation=relation) %}
+    {% for class in queries.term.domain_and_range(this=this, relation=relation) %}
         <a href="{{ class.link }}">{{ class.label }}</a>
         {% if loop.revindex == 2 %} or {% elif not loop.last %}, {% endif %}
     {% endfor %}
