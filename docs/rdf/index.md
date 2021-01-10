@@ -1,3 +1,12 @@
+---
+$id: "rdf:"
+label: RDF
+rdfs:comment: Resource Description Framework
+schema:image:
+    octa:url: rdf/logo.svg
+    rdfs:seeAlso: https://www.w3.org/RDF/icons/rdf_flyer.svg
+---
+
 - IRI is Internatinalized Resource Identifier and can use full Unicode
 - URI is Uniform Resource Identifier, subset of IRI that can only use ASCII
 - URL is URI that can be dereferenced

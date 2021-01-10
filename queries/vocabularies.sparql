@@ -1,0 +1,16 @@
+SELECT * WHERE {
+    ?ontology
+        a owl:Ontology ;
+
+        rdfs:label ?title ;
+        rdfs:comment ?description ;
+
+        schema:image / octa:url ?image ;
+        octa:subjectOf / octa:url ?url .
+
+    OPTIONAL {
+        ?ontology octa:position ?explicit_position .
+    }
+
+    BIND(COALESCE(?explicit_position, 0) AS ?position)
+} ORDER BY ?position

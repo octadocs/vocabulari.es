@@ -1,8 +1,12 @@
 ---
 $id: "rdfs:"
-label: "RDF Schema (RDFS)"
-schema:image: rdfs/logo.svg
+label: RDF Schema (RDFS)
 rdfs:comment: Basic notions of classes, properties, and relations between them.
+position: 1
+schema:image:
+    # TODO: Check if I can use this image
+    octa:url: rdfs/logo.svg
+    rdfs:seeAlso: http://rdfs.org/images/logo.svg
 ---
 
 <style>

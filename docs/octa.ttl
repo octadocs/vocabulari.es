@@ -9,9 +9,10 @@ octa:about rdfs:subPropertyOf schema:about .
 octa:title rdfs:subPropertyOf schema:name .
 octa:url rdfs:subPropertyOf schema:url .
 octa:subjectOf rdfs:subPropertyOf schema:SubjectOf .
+octa:position rdfs:subPropertyOf schema:position .
 
 octa:template
   rdfs:domain octa:Page ;
   rdfs:range rdfs:Literal ;
   rdfs:label "HTML/Jinja2 template" ;
-  rdfs:comment "Path to an MkDocs template file used to render particular page, relative to the `overrides` directory." .
+  rdfs:comment "Path to an MkDocs template file used to render particular page, relative to the `templates` directory." .
