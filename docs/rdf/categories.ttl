@@ -1,0 +1,35 @@
+@prefix : <local:> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix octa: <https://ns.octadocs.io/> .
+
+
+:Basics
+  a :Category ;
+  :color "red" ;
+  :priority 1 ;
+  rdfs:label "Basics" ;
+  :column_width "eight" ;
+  octa:about rdf: ;
+  rdfs:comment "Main notions of RDF" .
+
+
+:Statement
+  a :Category ;
+  :color "orange" ;
+  :priority 0 ;
+  rdfs:label "Statement" ;
+  :column_width "eight" ;
+  octa:about rdf: ;
+  rdfs:comment "Statement" .
+
+
+:Triple
+  a :Category ;
+  :color "yellow" ;
+  :priority 3 ;
+  rdfs:label "Triple" ;
+  :column_width "eight" ;
+  octa:about rdf: ;
+  rdfs:comment "Triple" .

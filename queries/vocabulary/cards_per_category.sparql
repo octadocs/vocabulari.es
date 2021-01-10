@@ -3,9 +3,6 @@
 SELECT * WHERE {
     ?term
         a ?category ;
-        octa:subjectOf / octa:url ?url .
-
-    GRAPH <local:rdfs/rdfs.ttl> {
-        ?term rdfs:label ?label .
-    }
+        octa:subjectOf / octa:url ?url ;
+        rdfs:label ?label .
 } ORDER BY ?label

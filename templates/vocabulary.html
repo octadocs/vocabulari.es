@@ -11,7 +11,7 @@
         2: "two",
         3: "three",
         4: "four",
-    }[cards_per_category.__len__()] %}
+    }[cards_per_category.__len__()] or "four" %}
 
     <div class="ui {{ card_count }} cards">
         {% for card in cards_per_category %}

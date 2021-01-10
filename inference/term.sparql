@@ -1,8 +1,6 @@
-# Every term of RDFS vocabulary should be rendered with term.html template.
+# Every term of a vocabulary (i.e. ontology) should be rendered with term.html template.
 INSERT {
     ?page octa:template "term.html" .
 } WHERE {
-    ?term
-        octa:subjectOf ?page ;
-        rdfs:isDefinedBy rdfs: .
+    ?page octa:about / rdfs:isDefinedBy / rdf:type owl:Ontology .
 }

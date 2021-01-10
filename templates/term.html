@@ -32,7 +32,7 @@
 {% block content %}
     <div class="ui clearing segment">
         <h1 class="ui header">
-            <a href="/rdfs/">rdfs:</a>{% filter trim %}
+            <a href="{{ header.vocabulary_url }}">{{ header.prefix }}:</a>{% filter trim %}
             {% endfilter %}{{ header.label }}
 
             <div class="sub header">
