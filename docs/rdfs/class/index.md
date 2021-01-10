@@ -1,7 +1,6 @@
 ---
 $id: rdfs:Class
 $type: Entities
-comment: Class, group, category.
 symbol: 🔴
 ---
 
