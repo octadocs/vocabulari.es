@@ -1,7 +1,6 @@
 ---
 $id: rdfs:domain
 $type: DomainAndRange
-comment: Who can have this property?
 symbol: ⤚
 ---
 

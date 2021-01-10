@@ -12,11 +12,5 @@ SELECT ?label ?symbol ?summary ?prefix ?vocabulary_url WHERE {
         ?this :symbol ?symbol .
     }
 
-    OPTIONAL {
-        GRAPH ?page {
-            ?this rdfs:comment ?summary .
-        }
-
-        ?page octa:about ?this .
-    }
+    ?this rdfs:comment ?summary .
 }
