@@ -30,6 +30,23 @@
     {% endif %}
 {% endmacro %}
 
+{% macro see_also(this) %}
+    {% set related_objects = queries.term.see_also(this=this) %}
+
+    {% if related_objects %}
+        <div class="item">
+            <div class="content">
+                <div class="header">{{ link(rdfs.seeAlso) }}</div>
+                {% for object in related_objects %}
+                    <a href="{{ object.link }}">{{ object.label }}</a>{% filter trim %}
+                    {% if not loop.last %}, {% endif %}
+                    {% endfilter %}
+                {% endfor %}
+            </div>
+        </div>
+    {% endif %}
+{% endmacro %}
+
 {% macro domains_or_ranges(this, relation) %}
     {% for class in queries.term.domain_and_range(this=this, relation=relation) %}
         <a href="{{ class.link }}">{{ class.label }}</a>
@@ -68,6 +85,8 @@
 
                 {{ meta(rdfs.subPropertyOf) }}
             {% endif %}
+
+            {{ see_also(this) }}
         </div>
     </div>
 

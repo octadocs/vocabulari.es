@@ -12,5 +12,6 @@
     "@type": "@id"
   },
   "title": "octa:title",
-  "position": "octa:position"
+  "position": "octa:position",
+  "seeAlso": "rdfs:seeAlso"
 }
