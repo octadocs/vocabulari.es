@@ -10,9 +10,23 @@
             <div class="ui segments">
                 <div class="ui content segment">
                     <div class="ui two column very relaxed grid">
-                        <div class="middle aligned column">
-                            <div class="ui huge centered header">{{ pattern.formula }}</div>
-                        </div>
+                        {% if pattern.image %}
+                            <div class="column">
+                                <div class="ui two column grid">
+                                    <div class="column">
+                                        <img src="{{ pattern.image }}" alt="{{ pattern.formula }}" style="border-style: none" />
+                                    </div>
+                                    <div class="middle aligned column">
+                                        <div class="ui huge centered header">{{ pattern.formula }}</div>
+                                    </div>
+                                </div>
+                            </div>
+                        {% else %}
+                            <div class="middle aligned column">
+                                <div class="ui huge centered header">{{ pattern.formula }}</div>
+                            </div>
+                        {% endif %}
+
                         <div class="column">
                             {{ macros.list_triples(pattern.pattern, local.expressedAs) }}
                         </div>
@@ -22,7 +36,7 @@
                     </div>
                 </div>
                 <div class="ui secondary segment">
-                    ...
+                    {{ pattern.comment }}
                 </div>
             </div>
             <br/><br/>

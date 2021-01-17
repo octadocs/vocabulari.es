@@ -1,5 +1,7 @@
 label: Set Equivalence
+comment: Every element of A also belongs to B, and vice versa.
 formula: A = B
+position: 0
 expressedAs:
   - subject: a
     predicate: rdfs:subClassOf
@@ -7,12 +9,3 @@ expressedAs:
   - subject: b
     predicate: rdfs:subClassOf
     object: a
-variables:
-  - $id: a
-    $type: Variable
-    color: red
-    label: A
-  - $id: b
-    $type: Variable
-    color: blue
-    label: B

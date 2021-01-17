@@ -23,3 +23,5 @@ infer:
 
 label: rdfs:label
 variables: $included
+position: schema:position
+image: schema:image
