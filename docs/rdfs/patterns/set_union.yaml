@@ -1,0 +1,12 @@
+label: Set Union
+comment: Every element of A and every element of B belong to C.
+image: /rdfs/patterns/union.svg
+position: 2
+formula: C ⊇ A ∪ B
+expressedAs:
+  - subject: a
+    predicate: rdfs:subClassOf
+    object: c
+  - subject: b
+    predicate: rdfs:subClassOf
+    object: c

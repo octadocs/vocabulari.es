@@ -1,0 +1,12 @@
+label: Set Intersection
+comment: Every element of C is also an element of A and B.
+image: /rdfs/patterns/intersection.svg
+position: 1
+formula: C ⊆ A ∩ B
+expressedAs:
+  - subject: c
+    predicate: rdfs:subClassOf
+    object: a
+  - subject: c
+    predicate: rdfs:subClassOf
+    object: b

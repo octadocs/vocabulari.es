@@ -1,0 +1,18 @@
+# Get patterns for a term.
+# Accepts: ?this
+SELECT DISTINCT ?pattern ?label ?comment ?formula ?image WHERE {
+    ?pattern
+        :formula ?formula ;
+        rdfs:label ?label ;
+        rdfs:comment ?comment ;
+        schema:position ?position ;
+        :expressedAs ?statement .
+
+    OPTIONAL {
+        ?pattern schema:image ?image .
+    }
+
+    { ?statement rdf:subject ?this } UNION
+    { ?statement rdf:predicate ?this } UNION
+    { rdf:object ?object ?this }
+} ORDER BY ?position
