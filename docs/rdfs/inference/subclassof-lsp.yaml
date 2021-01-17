@@ -1,4 +1,5 @@
 label: Every rdfs:Class can be replaced with its superclass
+$type: lsp
 given:
   - subject: s
     predicate: rdf:type

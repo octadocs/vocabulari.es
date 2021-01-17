@@ -1,0 +1,10 @@
+# Groups an inference rule belongs to.
+# Expects: ?rule
+SELECT ?label ?comment ?symbol WHERE {
+    ?rule a ?group .
+    ?group
+        a :RuleGroup ;
+        rdfs:label ?label ;
+        rdfs:comment ?comment ;
+        :symbol ?symbol .
+}

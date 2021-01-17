@@ -1,0 +1,5 @@
+$id: lsp
+$type: RuleGroup
+label: LSP
+comment: Liskov Substitution Principle means that wherever an upper-level thing is used it can be replaced with its descendant.
+symbol: ⇟

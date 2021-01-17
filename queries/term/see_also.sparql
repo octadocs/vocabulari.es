@@ -1,0 +1,6 @@
+# SeeAlso links for this object.
+# Expects: ?this
+SELECT ?link ?label WHERE {
+    ?this rdfs:seeAlso ?link .
+    ?link rdfs:label ?label .
+} ORDER BY ?label

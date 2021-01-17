@@ -1,0 +1,23 @@
+# Get rules for a term.
+# Accepts: ?this
+SELECT DISTINCT ?rule ?label ?source ?source_label ?source_download WHERE {
+    ?rule a :Rule .
+    ?rule rdfs:label ?label .
+
+    ?rule :given ?given .
+    ?rule :infer ?infer .
+
+    ?rule rdfs:seeAlso ?source .
+    ?source
+        rdfs:label ?source_label ;
+        rdfs:seeAlso ?source_download .
+
+    # TODO This boilerplate should be simplified.
+    { ?infer rdf:subject ?this } UNION
+    { ?infer rdf:predicate ?this } UNION
+    { ?infer rdf:object ?this } UNION
+
+    { ?given rdf:subject ?this } UNION
+    { ?given rdf:predicate ?this } UNION
+    { ?given rdf:object ?this }
+} ORDER BY ?rule

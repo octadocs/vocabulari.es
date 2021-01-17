@@ -1,4 +1,5 @@
 label: rdfs:subPropertyOf is reflexive
+$type: Reflexivity
 given:
   - subject: p
     predicate: rdf:type

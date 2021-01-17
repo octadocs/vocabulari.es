@@ -1,4 +1,5 @@
 label: Every rdf:Property can be replaced with its super property
+$type+: lsp
 given:
   - subject: s
     predicate: sub_property

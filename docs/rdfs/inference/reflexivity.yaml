@@ -1,0 +1,5 @@
+$id: Reflexivity
+$type: RuleGroup
+label: Reflexivity
+comment: Property is reflexive when it relates every object from its domain to itself.
+symbol: ⥁

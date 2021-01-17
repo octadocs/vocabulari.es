@@ -1,0 +1,5 @@
+INSERT {
+    ?rule rdfs:seeAlso <https://arxiv.org/abs/1601.02650> .
+} WHERE {
+    ?rule a :Rule .
+}

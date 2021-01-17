@@ -1,17 +1,10 @@
 {% extends "base.html" %}
 
 {% import "inference.html" as inference with context %}
+{% import "macros.html" as macros with context %}
 
 {% set header = queries.term.header(this=this).first %}
 {% set is_property = queries.term.is_property(this=this) %}
-
-{%- macro link(iri) -%}
-    {# Print clickable link to the given term. #}
-    {% set link = queries.term.link(thing=iri).first %}
-    {% if link %}
-        <a href="{{ link.url }}">{{ link.symbol }}</a> {{ link.title }}:
-    {% endif %}
-{%- endmacro -%}
 
 {% macro meta(relation) %}
     {% set related_objects = queries.term.meta(this=this, relation=relation) %}
@@ -19,7 +12,24 @@
     {% if related_objects %}
         <div class="item">
             <div class="content">
-                <div class="header">{{ link(relation) }}</div>
+                <div class="header">{{ macros.link(relation) }}</div>
+                {% for object in related_objects %}
+                    <a href="{{ object.link }}">{{ object.label }}</a>{% filter trim %}
+                    {% if not loop.last %}, {% endif %}
+                    {% endfilter %}
+                {% endfor %}
+            </div>
+        </div>
+    {% endif %}
+{% endmacro %}
+
+{% macro see_also(this) %}
+    {% set related_objects = queries.term.see_also(this=this) %}
+
+    {% if related_objects %}
+        <div class="item">
+            <div class="content">
+                <div class="header">{{ macros.link(rdfs.seeAlso) }}</div>
                 {% for object in related_objects %}
                     <a href="{{ object.link }}">{{ object.label }}</a>{% filter trim %}
                     {% if not loop.last %}, {% endif %}
@@ -68,6 +78,8 @@
 
                 {{ meta(rdfs.subPropertyOf) }}
             {% endif %}
+
+            {{ see_also(this) }}
         </div>
     </div>
 
