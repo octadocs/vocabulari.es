@@ -1,0 +1,12 @@
+$type: Category
+$id: rdfsplus
+
+label: RDFS Plus
+comment: RDFS+
+
+octa:about: "owl:"
+
+color: red
+column_width: sixteen
+
+priority: 0

@@ -1,3 +1,20 @@
+label: rdfs:label
+comment: rdfs:comment
+
+rdfs:isDefinedBy:
+  $type: $id
+
+rdfs:subClassOf:
+  $type: $id
+
+title: octa:title
+position: octa:position
+seeAlso: rdfs:seeAlso
+
+octa:about:
+  $type: $id
+
+
 # Map RDF keywords to something more concise
 subject:
   $id: rdf:subject
@@ -21,7 +38,6 @@ given:
 infer:
   $type: $id
 
-label: rdfs:label
-variables: $included
-position: schema:position
 image: schema:image
+
+variables: $included

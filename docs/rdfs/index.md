@@ -13,7 +13,3 @@ schema:image:
     octa:url: rdfs/logo.svg
     rdfs:seeAlso: http://rdfs.org/images/logo.svg
 ---
-
-## Also
-
-- [Logical Inference Rules](/rdfs/inference/)

@@ -1,0 +1,16 @@
+label: sameAs for subjects
+given:
+  - spo
+  - subject: s
+    predicate: owl:sameAs
+    object: something
+infer:
+  subject: something
+  predicate: p
+  object: o
+
+variables:
+  $id: something
+  $type: Variable
+  color: orange
+  label: something
