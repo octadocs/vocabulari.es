@@ -44,6 +44,33 @@
 {% endmacro %}
 
 
+{% macro term(iri) %}
+    {% set metas = queries.macros.triple_element(iri=iri) %}
+
+    {% if metas %}
+        {% set meta = metas|first %}
+    {% else %}
+        {% set meta = None %}
+    {% endif %}
+
+    {% if meta %}
+        {% if meta.is_variable %}
+            <span class="step {{ meta.color }}">?{{ meta.label }}</span>
+        {% else %}
+            {% if meta.url %}
+                <a href="{{ meta.url }}"
+                   class="step grey">{{ meta.prefix }}:{{ meta.label }}</a>
+            {% else %}
+                <span class="step">{{ meta.prefix }}:{{ meta.label }}</span>
+            {% endif %}
+        {% endif %}
+    {% else %}
+        <span class="step">?</span>
+    {% endif %}
+{% endmacro %}
+
+
+
 {% macro list_triples(rule, relationship) %}
     {% set statements = query('
             SELECT * WHERE {

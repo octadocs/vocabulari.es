@@ -9,8 +9,10 @@ expressedAs:
     object: a
 variables:
   - $id: a
+    $type: Variable
     color: red
     label: A
   - $id: b
+    $type: Variable
     color: blue
     label: B
