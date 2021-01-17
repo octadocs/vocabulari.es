@@ -1,4 +1,5 @@
 label: rdfs:subClassOf is transitive
+$type: Transitivity
 given:
   - subject: subclass
     predicate: rdfs:subClassOf

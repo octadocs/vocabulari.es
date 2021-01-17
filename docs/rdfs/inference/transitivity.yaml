@@ -1,0 +1,5 @@
+$id: Transitivity
+$type: RuleGroup
+label: Transitivity
+comment: Property is transitive when, if A relates to B and B to C then A relates to C.
+symbol: ⤏

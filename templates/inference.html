@@ -58,6 +58,16 @@
 {% endmacro %}
 
 
+{% macro tags(rule) %}
+    {% set tags = queries.inference.groups(rule=rule.rule) %}
+    {% for tag in tags %}
+        <div class="ui item inference-rule-tag" data-content="{{ tag.comment }}">
+            {{ tag.symbol }} {{ tag.label }}
+        </div>
+    {% endfor %}
+{% endmacro %}
+
+
 {% macro list_triples(rule, relationship) %}
     {# FIXME awful boilerplate and repetition #}
     {% if relationship == "given" %}
@@ -99,6 +109,12 @@
 
 
 {% macro inference_rules(this) %}
+    <script type="text/javascript">
+    $(function() {
+        $('.inference-rule-tag').popup();
+    });
+    </script>
+
     {% set rules = queries.inference.rules(this=this) %}
 
     {% if rules %}
@@ -158,7 +174,10 @@
                     </div>
                 </div>
                 <div class="ui secondary segment align-right">
-                    {{ source(rule) }}
+                    <div class="ui relaxed horizontal list">
+                        <div class="item">{{ source(rule) }}</div>
+                        {{ tags(rule) }}
+                    </div>
                 </div>
             </div>
             <br/><br/>

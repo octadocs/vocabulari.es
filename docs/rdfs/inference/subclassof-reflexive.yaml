@@ -1,4 +1,5 @@
 label: rdfs:subClassOf is reflexive
+$type: Reflexivity
 given:
   - subject: cls
     predicate: rdf:type

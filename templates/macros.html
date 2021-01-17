@@ -5,3 +5,40 @@
         <a href="{{ link.url }}">{{ link.symbol }}</a> {{ link.title }}:
     {% endif %}
 {%- endmacro -%}
+
+{% macro table(rows, class=None) %}
+    {% if rows %}
+        <table{% if class %} class="{{ class }}"{% endif %}>
+            <thead>
+                <tr>
+                    {% for column_name in rows.0 %}
+                        <th>{{ column_name }}</th>
+                    {% endfor %}
+                </tr>
+            </thead>
+            <tbody>
+            {% for row in rows %}
+                <tr>
+                    {% for cell in row.values() %}
+                        <td>
+                        {% set type_name = cell.__class__.__name__ %}
+
+                        {% if type_name == "URIRef" %}
+                            🔗 {{ cell }}
+                        {% elif type_name == 'Literal' %}
+                            🔤 {{ cell }}
+                        {% elif type_name == 'BNode' %}
+                            😶 {{ cell }}
+                        {% else %}
+                            {{ cell }}
+                        {% endif %}
+                        </td>
+                    {% endfor %}
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        There is no data here.
+    {% endif %}
+{% endmacro %}
