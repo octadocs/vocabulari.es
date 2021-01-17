@@ -8,7 +8,7 @@ octa:Page rdfs:subClassOf schema:WebPage .
 octa:about rdfs:subPropertyOf schema:about .
 octa:title rdfs:subPropertyOf schema:name .
 octa:url rdfs:subPropertyOf schema:url .
-octa:subjectOf rdfs:subPropertyOf schema:SubjectOf .
+octa:subjectOf rdfs:subPropertyOf schema:subjectOf .
 octa:position rdfs:subPropertyOf schema:position .
 
 octa:template

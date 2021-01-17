@@ -1,0 +1,17 @@
+label: owl:inverseOf
+given:
+  - subject: s
+    predicate: property
+    object: o
+  - subject: property
+    predicate: owl:inverseOf
+    object: inverse_property
+infer:
+  subject: o
+  predicate: inverse_property
+  object: s
+variables:
+  $id: inverse_property
+  $type: Variable
+  color: purple
+  label: inverse_property
