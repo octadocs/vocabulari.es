@@ -67,47 +67,6 @@
     {% endfor %}
 {% endmacro %}
 
-
-{% macro list_triples(rule, relationship) %}
-    {# FIXME awful boilerplate and repetition #}
-    {% if relationship == "given" %}
-        {% set statements = query('
-                SELECT * WHERE {
-                    ?rule :given ?statement .
-                    ?statement
-                        rdf:subject ?subject ;
-                        rdf:predicate ?predicate ;
-                        rdf:object ?object .
-                }
-            ',
-            rule=rule
-        ) %}
-    {% else %}
-        {% set statements = query('
-                SELECT * WHERE {
-                    ?rule :infer ?statement .
-                    ?statement
-                        rdf:subject ?subject ;
-                        rdf:predicate ?predicate ;
-                        rdf:object ?object .
-                }
-            ',
-            rule=rule
-        ) %}
-    {% endif %}
-
-    {% for item in statements %}
-        <!--p class="ui labels">
-            {{ term(item.subject) }} {{ term(item.predicate) }} {{ term(item.object) }}
-        </p-->
-
-        <div class="ui three steps">
-            {{ term(item.subject) }} {{ term(item.predicate) }} {{ term(item.object) }}
-        </div>
-    {% endfor %}
-{% endmacro %}
-
-
 {% macro inference_rules(this) %}
     <script type="text/javascript">
     $(function() {
@@ -163,10 +122,10 @@
                 <div class="ui content segment">
                     <div class="ui two column very relaxed grid">
                         <div class="column">
-                            {{ list_triples(rule.rule, "given") }}
+                            {{ macros.list_triples(rule.rule, local.given) }}
                         </div>
                         <div class="column">
-                            {{ list_triples(rule.rule, "infer") }}
+                            {{ macros.list_triples(rule.rule, local.infer) }}
                         </div>
                     </div>
                     <div class="ui vertical divider grey header">

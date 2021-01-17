@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 
 {% import "inference.html" as inference with context %}
+{% import "patterns.html" as patterns with context %}
 {% import "macros.html" as macros with context %}
 
 {% set header = queries.term.header(this=this).first %}
@@ -90,5 +91,6 @@
     <br/><br/>
 
     {{ inference.inference_rules(this) }}
+    {{ patterns.patterns(this) }}
 
 {% endblock %}

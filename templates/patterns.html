@@ -1,0 +1,31 @@
+{% import "macros.html" as macros with context %}
+
+{% macro patterns(this) %}
+    {% set patterns = queries.patterns.list(this=this) %}
+    {% if patterns %}
+        <h2 class="ui header">Usage Patterns</h2>
+
+        {% for pattern in patterns %}
+            <h3 class="ui header">{{ pattern.label }}</h3>
+            <div class="ui segments">
+                <div class="ui content segment">
+                    <div class="ui two column very relaxed grid">
+                        <div class="column">
+                            {{ pattern.formula }}
+                        </div>
+                        <div class="column">
+                            {{ macros.list_triples(pattern.pattern, local.expressedAs) }}
+                        </div>
+                    </div>
+                    <div class="ui vertical divider grey header">
+                        ⇐
+                    </div>
+                </div>
+                <div class="ui secondary segment">
+                    ...
+                </div>
+            </div>
+            <br/><br/>
+        {% endfor %}
+    {% endif %}
+{% endmacro %}

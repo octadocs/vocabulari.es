@@ -1,0 +1,12 @@
+# Get patterns for a term.
+# Accepts: ?this
+SELECT DISTINCT ?pattern ?label ?formula WHERE {
+    ?pattern
+        :formula ?formula ;
+        rdfs:label ?label ;
+        :expressedAs ?statement .
+
+    { ?statement rdf:subject ?this } UNION
+    { ?statement rdf:predicate ?this } UNION
+    { rdf:object ?object ?this }
+}

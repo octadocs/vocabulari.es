@@ -1,0 +1,16 @@
+label: Set Equivalence
+formula: A = B
+expressedAs:
+  - subject: a
+    predicate: rdfs:subClassOf
+    object: b
+  - subject: b
+    predicate: rdfs:subClassOf
+    object: a
+variables:
+  - $id: a
+    color: red
+    label: A
+  - $id: b
+    color: blue
+    label: B

@@ -42,3 +42,25 @@
         There is no data here.
     {% endif %}
 {% endmacro %}
+
+
+{% macro list_triples(rule, relationship) %}
+    {% set statements = query('
+            SELECT * WHERE {
+                ?rule ?relation ?statement .
+                ?statement
+                    rdf:subject ?subject ;
+                    rdf:predicate ?predicate ;
+                    rdf:object ?object .
+            }
+        ',
+        rule=rule,
+        relation=relationship
+    ) %}
+
+    {% for item in statements %}
+        <div class="ui three steps">
+            {{ term(item.subject) }} {{ term(item.predicate) }} {{ term(item.object) }}
+        </div>
+    {% endfor %}
+{% endmacro %}
