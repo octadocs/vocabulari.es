@@ -1,0 +1,29 @@
+label: owl:TransitiveProperty is a class of transitive properties
+given:
+  - subject: x
+    predicate: p
+    object: y
+  - subject: y
+    predicate: p
+    object: z
+  - subject: p
+    predicate: rdf:type
+    object: owl:TransitiveProperty
+infer:
+  subject: x
+  predicate: p
+  object: z
+
+variables:
+  - $id: x
+    $type: Variable
+    color: red
+    label: x
+  - $id: y
+    $type: Variable
+    color: blue
+    label: y
+  - $id: z
+    $type: Variable
+    color: purple
+    label: z

@@ -7,6 +7,6 @@ comment: RDFS+
 octa:about: "owl:"
 
 color: red
-column_width: eight
+column_width: sixteen
 
 priority: 0

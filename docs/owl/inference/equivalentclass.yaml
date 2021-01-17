@@ -1,0 +1,22 @@
+label: Equality of classes
+given:
+  - subject: class1
+    predicate: owl:equivalentClass
+    object: class2
+  - subject: s
+    predicate: rdf:type
+    object: class1
+infer:
+  subject: s
+  predicate: rdf:type
+  object: class2
+
+variables:
+  - $id: class1
+    $type: Variable
+    color: orange
+    label: class1
+  - $id: class2
+    $type: Variable
+    color: purple
+    label: class2

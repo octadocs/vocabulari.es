@@ -1,0 +1,10 @@
+label: sameAs for objects
+given:
+  - spo
+  - subject: o
+    predicate: owl:sameAs
+    object: something
+infer:
+  subject: s
+  predicate: p
+  object: something

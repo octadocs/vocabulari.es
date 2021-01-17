@@ -1,0 +1,12 @@
+label: owl:SymmetricProperty is commutative
+given:
+  - subject: s
+    predicate: p
+    object: o
+  - subject: p
+    predicate: rdf:type
+    object: owl:SymmetricProperty
+infer:
+  subject: o
+  predicate: p
+  object: s

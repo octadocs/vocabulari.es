@@ -1,7 +1,7 @@
 ---
-$id: owl:inverseOf
+$id: owl:sameAs
 $type:
     - rdfsplus
     - owl:SymmetricProperty
-symbol: 🔁
+symbol: "="
 ---

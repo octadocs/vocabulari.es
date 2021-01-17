@@ -3,13 +3,18 @@
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix rdf: <https://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix xsd: <https://www.w3.org/2001/XMLSchema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+
 
 octa:Page rdfs:subClassOf schema:WebPage .
-octa:about rdfs:subPropertyOf schema:about .
 octa:title rdfs:subPropertyOf schema:name .
 octa:url rdfs:subPropertyOf schema:url .
 octa:subjectOf rdfs:subPropertyOf schema:subjectOf .
 octa:position rdfs:subPropertyOf schema:position .
+
+octa:about
+  rdfs:subPropertyOf schema:about ;
+  owl:inverseOf octa:subjectOf .
 
 octa:template
   rdfs:domain octa:Page ;
