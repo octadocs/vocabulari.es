@@ -1,3 +1,5 @@
+{% import "macros.html" as macros with context %}
+
 {% macro term(iri) %}
     {% set metas = query('
         SELECT * WHERE {
@@ -50,6 +52,12 @@
 {% endmacro %}
 
 
+{% macro source(rule) %}
+    {{ macros.link(rdfs.seeAlso) }}
+    <a href="{{ rule.source }}">{{ rule.source_label }}</a> <a href="{{ rule.source_download }}">📥</a>
+{% endmacro %}
+
+
 {% macro list_triples(rule, relationship) %}
     {# FIXME awful boilerplate and repetition #}
     {% if relationship == "given" %}
@@ -91,24 +99,7 @@
 
 
 {% macro inference_rules(this) %}
-    {% set rules = query('
-        SELECT DISTINCT ?rule ?label WHERE {
-            ?rule a :Rule .
-            ?rule rdfs:label ?label .
-
-            ?rule :given ?given .
-            ?rule :infer ?infer .
-
-            # TODO This boilerplate should be simplified.
-            { ?infer rdf:subject ?this } UNION
-            { ?infer rdf:predicate ?this } UNION
-            { ?infer rdf:object ?this } UNION
-
-            { ?given rdf:subject ?this } UNION
-            { ?given rdf:predicate ?this } UNION
-            { ?given rdf:object ?this }
-        } ORDER BY ?rule
-    ', this=this) %}
+    {% set rules = queries.inference.rules(this=this) %}
 
     {% if rules %}
         <h2 class="ui header">Inference Rules</h2>
@@ -166,11 +157,9 @@
                         ⇒
                     </div>
                 </div>
-                {#
-                <!--div class="ui secondary segment align-right">
-                    Links & Tags
-                </div-->
-                #}
+                <div class="ui secondary segment align-right">
+                    {{ source(rule) }}
+                </div>
             </div>
             <br/><br/>
         {% endfor %}

@@ -1,0 +1,7 @@
+{%- macro link(iri) -%}
+    {# Print clickable link to the given term. #}
+    {% set link = queries.term.link(thing=iri).first %}
+    {% if link %}
+        <a href="{{ link.url }}">{{ link.symbol }}</a> {{ link.title }}:
+    {% endif %}
+{%- endmacro -%}
