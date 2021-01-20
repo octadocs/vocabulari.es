@@ -5,20 +5,16 @@
 # What is a variable? Define a few variables.
 - $id: Variable
 - $id: s
-  $type: Variable
   label: subject
   color: red
 - $id: p
-  $type: Variable
   label: predicate
   color: green
 - $id: o
-  $type: Variable
   label: object
   color: blue
 
 - $id: cls
-  $type: Variable
   label: class
   color: blue
 

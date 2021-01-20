@@ -12,6 +12,5 @@ infer:
   object: s
 variables:
   $id: inverse_property
-  $type: Variable
   color: purple
   label: inverse_property

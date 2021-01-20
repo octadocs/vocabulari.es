@@ -1,0 +1,5 @@
+# Variables key is a property which has domain of Variable.
+# This allows to skip `$type: Variable` declarations.
+$id: variables
+$type: rdf:Property
+rdfs:range: Variable

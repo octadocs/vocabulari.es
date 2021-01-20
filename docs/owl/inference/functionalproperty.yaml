@@ -1,0 +1,23 @@
+label: An owl:FunctionalProperty allows only one distinct object per subject
+given:
+  - subject: s
+    predicate: p
+    object: object1
+  - subject: s
+    predicate: p
+    object: object2
+  - subject: p
+    predicate: rdf:type
+    object: owl:FunctionalProperty
+    position: 10
+infer:
+  subject: object1
+  predicate: owl:sameAs
+  object: object2
+variables:
+  - $id: object1
+    label: object1
+    color: orange
+  - $id: object2
+    label: object2
+    color: purple
