@@ -1,0 +1,14 @@
+# List statements from an inference rule.
+# Expects: ?rule ?relation
+SELECT * WHERE {
+    ?rule ?relation ?statement .
+
+    ?statement
+        rdf:subject ?subject ;
+        rdf:predicate ?predicate ;
+        rdf:object ?object .
+
+    OPTIONAL {
+        ?statement octa:position ?position .
+    }
+} ORDER BY ?position

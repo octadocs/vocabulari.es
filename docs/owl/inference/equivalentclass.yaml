@@ -13,10 +13,8 @@ infer:
 
 variables:
   - $id: class1
-    $type: Variable
     color: orange
     label: class1
   - $id: class2
-    $type: Variable
     color: purple
     label: class2

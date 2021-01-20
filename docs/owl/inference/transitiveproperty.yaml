@@ -16,14 +16,11 @@ infer:
 
 variables:
   - $id: x
-    $type: Variable
     color: red
     label: x
   - $id: y
-    $type: Variable
     color: blue
     label: y
   - $id: z
-    $type: Variable
     color: purple
     label: z

@@ -11,6 +11,5 @@ infer:
 
 variables:
   $id: something
-  $type: Variable
   color: orange
   label: something

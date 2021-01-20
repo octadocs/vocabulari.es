@@ -9,6 +9,5 @@ infer:
   object: rdfs:Literal
 variables:
   $id: datatype
-  $type: Variable
   color: orange
   label: datatype

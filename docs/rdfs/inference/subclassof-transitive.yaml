@@ -13,10 +13,8 @@ infer:
   object: super_class
 variables:
   - $id: subclass
-    $type: Variable
     color: yellow
     label: subclass
   - $id: super_class
-    $type: Variable
     color: purple
     label: super_class

@@ -72,15 +72,7 @@
 
 
 {% macro list_triples(rule, relationship) %}
-    {% set statements = query('
-            SELECT * WHERE {
-                ?rule ?relation ?statement .
-                ?statement
-                    rdf:subject ?subject ;
-                    rdf:predicate ?predicate ;
-                    rdf:object ?object .
-            }
-        ',
+    {% set statements = queries.macros.statements(
         rule=rule,
         relation=relationship
     ) %}

@@ -40,4 +40,5 @@ infer:
 
 image: schema:image
 
-variables: $included
+variables:
+  $type: $id
