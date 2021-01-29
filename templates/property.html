@@ -1,0 +1,30 @@
+{% import "macros.html" as macros with context %}
+
+{% set categories = queries.term.property(this=this) %}
+
+{% macro property(this) %}
+    <div class="ui clearing segment">
+        <div class="ui huge vertical menu">
+            <div class="item">
+                <div class="header">
+                    {{ macros.link(rdf.Property) }}
+                </div>
+            </div>
+
+            {% for category in categories %}
+                <a class="{% if category.is_active %}teal active {% endif %}item" href="{{ category.url }}">
+                    <div class="ui{% if category.is_active %} teal{% endif %} right floated header">
+                        {{ category.symbol }}
+                    </div>
+                    {% if category.is_active and not category.is_official %}
+                        <strong><em>{{ category.label }}</em></strong>
+                    {% elif category.is_active %}
+                        <strong>{{ category.label }}</strong>
+                    {% else %}
+                        <strike>{{ category.label }}</strike>
+                    {% endif %}
+                </a>
+            {% endfor %}
+        </div>
+    </div>
+{% endmacro %}

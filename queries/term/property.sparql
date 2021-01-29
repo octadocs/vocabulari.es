@@ -1,0 +1,30 @@
+# Find important characteristics of an rdf:Property to display them in Property block.
+# Expects: ?this
+SELECT DISTINCT ?class ?symbol ?url ?label ?position ?is_official ?is_active WHERE {
+    # List all property categories defined in property.yaml file.
+    rdf:Property :category [
+        :class ?class ;
+        rdfs:label ?label ;
+        octa:position ?position
+    ] .
+
+    ?class
+        :symbol ?symbol ;
+        octa:subjectOf / octa:url ?url .
+
+    # Does the category apply to the Property in question?
+    OPTIONAL {
+        GRAPH ?opinion {
+            ?this a ?class .
+        }
+        BIND(true as ?applies_to_this)
+    }
+    BIND(COALESCE(?applies_to_this, false) as ?is_active)
+
+    # Even if it does, is this an official opinion of W3C ontologies?
+    OPTIONAL {
+        ?opinion a owl:Ontology .
+        BIND(true as ?is_ontology)
+    }
+    BIND(COALESCE(?is_ontology, false) as ?is_official)
+} ORDER BY ?position

@@ -1,6 +1,9 @@
 ---
 $id: rdfs:subPropertyOf
-$type: Sub
+$type:
+    - Sub
+    - owl:TransitiveProperty
+    - owl:ReflexiveProperty
 title: sub&shy;Property&shy;Of
 symbol: ⊆
 ---

@@ -1,0 +1,16 @@
+# Distinct qualification of various properties. We display these qualifications
+# at the dedicated Property block on every page of a Property.
+$id: rdf:Property
+category:
+  - class:
+      $id: owl:TransitiveProperty
+    label: Transitive
+    position: 0
+  - class:
+      $id: owl:SymmetricProperty
+    label: Symmetric
+    position: 1
+  - class:
+      $id: owl:ReflexiveProperty
+    label: Reflexive
+    position: 2

@@ -3,6 +3,7 @@
 {% import "inference.html" as inference with context %}
 {% import "patterns.html" as patterns with context %}
 {% import "macros.html" as macros with context %}
+{% import "property.html" as property with context %}
 
 {% set header = queries.term.header(this=this).first %}
 {% set is_property = queries.term.is_property(this=this) %}
@@ -83,6 +84,10 @@
             {{ see_also(this) }}
         </div>
     </div>
+
+    {% if is_property %}
+        {{ property.property(this) }}
+    {% endif %}
 
     <div class="ui horizontal divider"></div>
 
