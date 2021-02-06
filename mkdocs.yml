@@ -13,13 +13,14 @@ markdown_extensions:
 
 plugins:
   - octadocs
-  - search
   - macros:
       modules:
         - octadocs.macros
 
 theme:
   name: semantic
+  sidebar: false
+  search: false
   logo:
     image: logo.png
   custom_dir: templates
