@@ -2,9 +2,39 @@
 
 {% set categories = queries.term.property(this=this) %}
 
+{% macro domains_or_ranges(this, relation) %}
+    {% set classes = queries.term.domain_and_range(this=this, relation=relation) %}
+
+    {% if classes %}
+        {% for class in classes %}
+            <a href="{{ class.link }}">{{ class.label }}</a>
+            {% if loop.revindex == 2 %} or {% elif not loop.last %}, {% endif %}
+        {% endfor %}
+    {% else %}
+        {% set resource = queries.term.link(thing=rdfs.Resource).first %}
+        <a href="{{ resource.url }}">{{ resource.title }}</a>
+    {% endif %}
+{% endmacro %}
+
 {% macro property(this) %}
     <div class="ui header">
         {{ macros.link(rdf.Property) }}
+    </div>
+
+    {{ macros.meta(rdfs.subPropertyOf) }}
+
+    <div class="ui segment">
+        <div class="ui two column stackable left aligned grid">
+            <div class="ui vertical divider">→</div>
+            <div class="row">
+                <div class="column">
+                    {{ domains_or_ranges(this, rdfs.domain) }}
+                </div>
+                <div class="column">
+                    {{ domains_or_ranges(this, rdfs.range) }}
+                </div>
+            </div>
+        </div>
     </div>
 
     <div class="ui vertical menu">

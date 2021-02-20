@@ -6,4 +6,6 @@ SELECT ?label ?link WHERE {
     ?class
         rdfs:label ?label ;
         octa:subjectOf / octa:url ?link .
+
+    FILTER(?class != rdfs:Resource)
 }

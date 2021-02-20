@@ -83,3 +83,21 @@
         </div>
     {% endfor %}
 {% endmacro %}
+
+{% macro meta(relation) %}
+    {% set related_objects = queries.term.meta(this=this, relation=relation) %}
+
+    {% if related_objects %}
+        <div class="item">
+            <div class="content">
+                <div class="header">{{ link(relation) }}</div>
+                {% for object in related_objects %}
+                    <a href="{{ object.link }}">{{ object.label }}</a>
+                    {% filter trim %}
+                        {% if not loop.last %}, {% endif %}
+                    {% endfilter %}
+                {% endfor %}
+            </div>
+        </div>
+    {% endif %}
+{% endmacro %}
