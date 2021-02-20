@@ -4,12 +4,12 @@ SELECT DISTINCT ?class ?symbol ?url ?label ?position ?is_official ?is_active WHE
     # List all property categories defined in property.yaml file.
     rdf:Property :category [
         :class ?class ;
-        rdfs:label ?label ;
         octa:position ?position
     ] .
 
     ?class
         :symbol ?symbol ;
+        rdfs:label ?label ;
         octa:subjectOf / octa:url ?url .
 
     # Does the category apply to the Property in question?

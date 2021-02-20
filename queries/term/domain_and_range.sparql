@@ -1,4 +1,5 @@
 # Determine domain or range of given Property.
+# We exclude rdfs:Resource from the list because its existence is obvious.
 # Expects: ?this, ?relation
 SELECT ?label ?link WHERE {
     ?this ?relation ?class .

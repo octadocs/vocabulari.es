@@ -37,11 +37,13 @@
         </div>
     </div>
 
-    <div class="ui vertical menu">
+    {{ macros.meta(rdf.type) }}
+
+    <div class="ui vertical menu" style="width: 100%">
         {% for category in categories %}
-            <a class="{% if category.is_active %}teal active {% endif %}item"
+            <a class="{% if category.is_active %} active {% endif %}item"
                href="{{ category.url }}">
-                <div class="ui{% if category.is_active %} teal{% endif %} right floated header">
+                <div class="ui right floated header">
                     {{ category.symbol }}
                 </div>
                 {% if category.is_active and not category.is_official %}
