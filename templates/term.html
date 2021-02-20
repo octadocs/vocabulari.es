@@ -49,6 +49,10 @@
     {% endfor %}
 {% endmacro %}
 
+{% block navbar %}
+    {% include "includes/navbar-term.html" with context %}
+{% endblock %}
+
 {% block content %}
     <div class="ui clearing segment">
         <h1 class="ui header">
