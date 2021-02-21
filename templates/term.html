@@ -11,16 +11,12 @@
     {% set related_objects = queries.term.see_also(this=this) %}
 
     {% if related_objects %}
-        <div class="item">
-            <div class="content">
-                <div class="header">{{ macros.link(rdfs.seeAlso) }}</div>
-                {% for object in related_objects %}
-                    <a href="{{ object.link }}">{{ object.label }}</a>
-                    {% filter trim %}
-                        {% if not loop.last %}, {% endif %}
-                    {% endfilter %}
-                {% endfor %}
-            </div>
+        <div class="ui header">{{ macros.link(rdfs.seeAlso) }}</div>
+
+        <div class="ui vertical menu" style="width: 100%">
+            {% for object in related_objects %}
+                <a class="item" href="{{ object.link }}">{{ object.label }}</a>
+            {% endfor %}
         </div>
     {% endif %}
 {% endmacro %}
@@ -30,26 +26,16 @@
 {% endblock %}
 
 {% block content %}
-    <div class="ui segment">
-        <div class="ui right rail">
-            {% if is_property %}
-                {{ property.property(this) }}
-            {% endif %}
-        </div>
-        <p></p>
-        <p></p>
+    <div class="ui right internal rail">
+        {{ macros.meta(rdf.type) }}
+
+        {% if is_property %}
+            {{ property.property(this) }}
+        {% endif %}
+
+        {{ macros.meta(rdfs.subClassOf) }}
+        {{ see_also(this) }}
     </div>
-
-    <div class="ui clearing segment">
-        <div class="ui relaxed horizontal list">
-            {{ macros.meta(rdf.type) }}
-            {{ macros.meta(rdfs.subClassOf) }}
-
-            {{ see_also(this) }}
-        </div>
-    </div>
-
-    <div class="ui horizontal divider"></div>
 
     {{ super() }}
 
@@ -57,5 +43,4 @@
 
     {{ inference.inference_rules(this) }}
     {{ patterns.patterns(this) }}
-
 {% endblock %}

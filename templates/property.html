@@ -21,8 +21,6 @@
         {{ macros.link(rdf.Property) }}
     </div>
 
-    {{ macros.meta(rdfs.subPropertyOf) }}
-
     <div class="ui segment">
         <div class="ui two column stackable left aligned grid">
             <div class="ui vertical divider">→</div>
@@ -37,23 +35,5 @@
         </div>
     </div>
 
-    {{ macros.meta(rdf.type) }}
-
-    <div class="ui vertical menu" style="width: 100%">
-        {% for category in categories %}
-            <a class="{% if category.is_active %} active {% endif %}item"
-               href="{{ category.url }}">
-                <div class="ui right floated header">
-                    {{ category.symbol }}
-                </div>
-                {% if category.is_active and not category.is_official %}
-                    <strong><em>{{ category.label }}</em></strong>
-                {% elif category.is_active %}
-                    <strong>{{ category.label }}</strong>
-                {% else %}
-                    <strike>{{ category.label }}</strike>
-                {% endif %}
-            </a>
-        {% endfor %}
-    </div>
+    {{ macros.meta(rdfs.subPropertyOf) }}
 {% endmacro %}
