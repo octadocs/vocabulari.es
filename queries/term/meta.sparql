@@ -1,10 +1,11 @@
 # Objects related to this one, in printable form.
 # Expects: ?this ?relation
-SELECT ?link ?label WHERE {
+SELECT ?link ?label ?symbol WHERE {
     ?this ?relation ?obj .
 
     ?obj
         rdfs:label ?label ;
+        :symbol ?symbol ;
         octa:subjectOf / octa:url ?link .
 
     FILTER(?obj != ?this)

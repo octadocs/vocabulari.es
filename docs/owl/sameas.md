@@ -3,5 +3,7 @@ $id: owl:sameAs
 $type:
     - rdfsplus
     - owl:SymmetricProperty
-symbol: "="
+    - owl:TransitiveProperty
+    - owl:ReflexiveProperty
+symbol: "≡"
 ---
