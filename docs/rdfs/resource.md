@@ -2,6 +2,7 @@
 $id: rdfs:Resource
 $type: Entities
 symbol: ∃
+position: 0
 ---
 
 Resource is anything that you might want to talk about. It defines the term RDF - Resource Description Framework - itself.
