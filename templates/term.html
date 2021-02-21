@@ -26,21 +26,26 @@
 {% endblock %}
 
 {% block content %}
-    <div class="ui right internal rail">
-        {{ macros.meta(rdf.type) }}
+    <div style="position: relative">
+        <div class="ui right rail">
+            {{ macros.meta(rdf.type) }}
 
-        {% if is_property %}
-            {{ property.property(this) }}
-        {% endif %}
+            {% if is_property %}
+                {{ property.property(this) }}
+            {% endif %}
 
-        {{ macros.meta(rdfs.subClassOf) }}
-        {{ see_also(this) }}
+            {{ macros.meta(rdfs.subClassOf) }}
+            {{ see_also(this) }}
+        </div>
+
+        {{ super() }}
+
+        <br/><br/>
+
+        {{ inference.inference_rules(this) }}
+        {{ patterns.patterns(this) }}
+
+        <div class="clearfix"></div>
+        <div style="clear: both"></div>
     </div>
-
-    {{ super() }}
-
-    <br/><br/>
-
-    {{ inference.inference_rules(this) }}
-    {{ patterns.patterns(this) }}
 {% endblock %}
