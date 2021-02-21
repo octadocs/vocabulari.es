@@ -8,5 +8,9 @@ SELECT ?link ?label ?symbol WHERE {
         :symbol ?symbol ;
         octa:subjectOf / octa:url ?link .
 
+    OPTIONAL {
+        ?obj octa:position ?position .
+    }
+
     FILTER(?obj != ?this)
-} ORDER BY ?label
+} ORDER BY ?position
