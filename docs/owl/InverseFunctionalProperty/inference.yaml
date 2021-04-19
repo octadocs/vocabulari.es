@@ -1,0 +1,28 @@
+label: An owl:InverseFunctionalProperty means two non-equal subjects cannot be linked to one object
+given:
+  - subject: subject1
+    predicate: p
+    object: identifier
+    position: 1
+  - subject: subject2
+    predicate: p
+    object: identifier
+    position: 2
+  - subject: p
+    predicate: rdf:type
+    object: owl:InverseFunctionalProperty
+    position: 10
+infer:
+  subject: subject1
+  predicate: owl:sameAs
+  object: subject2
+variables:
+  - $id: subject1
+    label: subject1
+    color: orange
+  - $id: subject2
+    label: subject2
+    color: purple
+  - $id: identifier
+    label: identifier
+    color: red
