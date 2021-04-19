@@ -12,3 +12,8 @@ SHELL:=/usr/bin/env bash
 update:
 	drawio --export docs/rdfs/patterns/sets.drawio --output docs/rdfs/patterns/intersection.svg --page-index 0
 	drawio --export docs/rdfs/patterns/sets.drawio --output docs/rdfs/patterns/union.svg --page-index 1
+
+
+.PHONY: serve
+serve:
+	mkdocs serve -a localhost:9030
