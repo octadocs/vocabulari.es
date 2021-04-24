@@ -1,0 +1,12 @@
+$id: OntologyTermPage
+label: Class of pages which describe terms of ontologies.
+seeAlso: OntologyTerm
+owl:equivalentClass:
+  - $type: owl:Restriction
+    label: Every page which describes an OntologyTerm is considered an OntologyTermPage.
+    owl:onProperty: octa:about
+    owl:someValuesFrom: OntologyTerm
+  - $type: owl:Restriction
+    label: Every OntologyTermPage must have "term.html" as its octa:template.
+    owl:onProperty: octa:template
+    owl:hasValue: "term.html"

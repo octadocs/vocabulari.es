@@ -1,0 +1,6 @@
+$id: OntologyTerm
+label: Class of terms defined by ontologies (RDFS, OWL and others).
+owl:equivalentClass:
+  $type: owl:Restriction
+  owl:onProperty: rdfs:isDefinedBy
+  owl:someValuesFrom: owl:Ontology

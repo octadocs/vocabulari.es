@@ -42,3 +42,9 @@ image: schema:image
 
 variables:
   $type: $id
+
+owl:someValuesFrom:
+  $type: $id
+
+owl:onProperty:
+  $type: $id
